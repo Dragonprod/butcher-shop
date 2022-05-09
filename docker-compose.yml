@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+
+  butcherdb:
+    image: postgres:12
+    volumes:
+      - butcher-app-db-data:/var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_DB: ${DB_POSTGRES_DB}
+      POSTGRES_USER: ${DB_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${DB_POSTGRES_PASSWORD}
+
+volumes:
+  butcher-app-db-data:
