@@ -20,6 +20,8 @@
   --bg-clr-1: #fff;
   --bg-clr-2: #fff4f1;
   --primary-font: 'Roboto', sans-serif;
+  // --primary-font-size: clamp(14px, 3vw, 16px);
+  --primary-font-size: 16px;
   scroll-behavior: smooth;
 }
 
@@ -30,7 +32,8 @@ body {
   line-height: 1.5;
   font-family: var(--primary-font);
   -webkit-font-smoothing: antialiased;
-  font-size: clamp(13px, 50vw, 15px);
+  font-size: var(--primary-font-size);
+  font-weight: 400;
 }
 
 /* ===== Selection ===== */
@@ -48,7 +51,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--gray-30-clr);
+  background: transparent;
   /* background: var(--brand-primary-clr); */
   border-radius: 6px;
 }
@@ -57,6 +60,8 @@ body {
 a {
   text-decoration: none;
   color: currentColor;
+  font-size: var(--primary-font-size);
+  font-weight: 400;
 }
 
 ul {
@@ -65,7 +70,6 @@ ul {
 
 button {
   font-family: var(--primary-font);
-  font-size: clamp(13px, 50vw, 15px);
   color: var(--bg-clr-1);
   background: var(--accent-clr-2);
   outline: none;
@@ -76,7 +80,6 @@ button {
 input {
   color: var(--text-clr-1);
   outline: none;
-  font-size: clamp(13px, 50vw, 15px);
 
   &::placeholder {
     color: var(--text-clr-2);

@@ -1,0 +1,19 @@
+.header {
+  grid-area: header;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: var(--bg-clr-1);
+  padding: 16px 26px;
+  z-index: 5;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
