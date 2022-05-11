@@ -5,7 +5,7 @@ export default function CatalogPage() {
   return (
     <>
       <Header />
-
+      <div></div>
       <Banner />
     </>
   );
