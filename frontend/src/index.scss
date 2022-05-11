@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto');
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== Root Variables ===== */
+:root {
+  --grid-column-amount: 4;
+  --border-radius: 12px;
+  --accent-clr-1: #ff683a;
+  --accent-clr-2: #fe7f57;
+  --text-clr-1: #000;
+  --text-clr-2: #5c5858;
+  --text-clr-3: #fafaff;
+  --bg-clr-1: #fff;
+  --bg-clr-2: #fff4f1;
+  --primary-font: 'Roboto', sans-serif;
+  // --primary-font-size: clamp(14px, 3vw, 16px);
+  --primary-font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+/* ===== Body Styles ===== */
+body {
+  color: var(--text-clr-1);
+  background-color: var(--bg-clr-1);
+  line-height: 1.5;
+  font-family: var(--primary-font);
+  -webkit-font-smoothing: antialiased;
+  font-size: var(--primary-font-size);
+  font-weight: 400;
+}
+
+/* ===== Selection ===== */
+::selection {
+  /* background: var(--gray-40-disabled-clr); */
+  background: var(--accent-clr-2);
+  color: var(--bg-clr-1);
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 9px;
+  background: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
+  /* background: var(--brand-primary-clr); */
+  border-radius: 6px;
+}
+
+/* ===== Small Common Styles ===== */
+a {
+  text-decoration: none;
+  color: currentColor;
+  font-size: var(--primary-font-size);
+  font-weight: 400;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: var(--primary-font);
+  color: var(--bg-clr-1);
+  background: var(--accent-clr-2);
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+input {
+  color: var(--text-clr-1);
+  outline: none;
+
+  &::placeholder {
+    color: var(--text-clr-2);
+  }
+}
