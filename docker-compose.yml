@@ -2,6 +2,33 @@ version: "3.9"
 
 services:
 
+  # proxy:
+  #   build:
+  #     context: ./nginx
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - 80:80
+
+  # backend:
+  #   build:
+  #     context: ./backend
+  #     dockerfile: Dockerfile
+  #   image: webtice-server
+  #   ports:
+  #     - "8080:8080"
+  #   depends_on:
+  #     - butcherdb
+
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: Dockerfile
+  #   environment:
+  #     FRONTEND_DEBUG_MODE: ${FRONTEND_DEBUG_MODE}
+  #     FRONTEND_PRODUCTION_URL: ${FRONTEND_PRODUCTION_URL}
+  #   depends_on:
+  #     - backend
+
   butcherdb:
     image: postgres:12
     volumes:
@@ -10,9 +37,9 @@ services:
       - "5432:5432"
     environment:
       PGDATA: /var/lib/postgresql/data/pgdata
-      POSTGRES_DB: ${DB_POSTGRES_DB}
-      POSTGRES_USER: ${DB_POSTGRES_USER}
-      POSTGRES_PASSWORD: ${DB_POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 
 volumes:
   butcher-app-db-data:
