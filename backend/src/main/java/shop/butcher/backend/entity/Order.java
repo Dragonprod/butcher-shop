@@ -39,11 +39,10 @@ public class Order {
     public Order() {
     }
 
-    public Order(User user, Double totalSum, LocalDateTime createdAt, Boolean isComplete) {
-        this.user = user;
+    public Order(Double totalSum, LocalDateTime createdAt) {
         this.totalSum = totalSum;
         this.createdAt = createdAt;
-        this.isComplete = isComplete;
+        this.isComplete = false;
     }
 
     public User getUser() {
