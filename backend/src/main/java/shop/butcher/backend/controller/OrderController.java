@@ -6,22 +6,23 @@ import org.springframework.web.bind.annotation.*;
 import shop.butcher.backend.dto.request.OrderRequest;
 import shop.butcher.backend.dto.request.ProductReequest;
 import shop.butcher.backend.dto.response.MessageResponse;
-import shop.butcher.backend.entity.Category;
-import shop.butcher.backend.entity.Order;
-import shop.butcher.backend.entity.Product;
+import shop.butcher.backend.entity.*;
+import shop.butcher.backend.enums.RoleEnum;
 import shop.butcher.backend.repository.CategoryRepository;
 import shop.butcher.backend.repository.OrderRepository;
 import shop.butcher.backend.repository.ProductRepository;
+import shop.butcher.backend.repository.UserRepository;
 
 import javax.validation.Valid;
-import java.util.List;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api/order")
 public class OrderController {
     @Autowired
     OrderRepository orderRepository;
-
+    @Autowired
+    UserRepository userRepository;
     @Autowired
     CategoryRepository categoryRepository;
 
@@ -35,10 +36,29 @@ public class OrderController {
 
     @PostMapping("/")
     public ResponseEntity<?> createOrder(@Valid @RequestBody OrderRequest orderRequest) {
-        // TODO: Add logic
-        Order order = new Order();
+        User user = userRepository.findById(orderRequest.getUserId())
+                .orElseThrow(() -> new RuntimeException("Error: User is not found."));
+        Order order = new Order(orderRequest.getTotalSum(), orderRequest.getCreatedAt());
+        Map<Integer, Integer> productsIdsWithAmount = orderRequest.getProductsWithAmount();
+        Map<Integer, Product> productsWithAmount = new HashMap<Integer, Product>();
+        for (var entry : productsIdsWithAmount.entrySet()) {
+            Product product = productRepository.findById(entry.getValue().longValue())
+                    .orElseThrow(() -> new RuntimeException("Error: Product is not found."));
+            productsWithAmount.put(entry.getKey(), product);
+        }
+        order.setUser(user);
+        order.setProductsWithAmount(productsWithAmount);
         orderRepository.save(order);
         return ResponseEntity.ok(new MessageResponse("Order created successfully!"));
+    }
+
+    @PostMapping("/{id}/complete")
+    public ResponseEntity<?> completeOrder(@PathVariable("id") Long id) {
+        Order order = orderRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Error: Order is not found."));
+        order.setComplete(true);
+        orderRepository.save(order);
+        return ResponseEntity.ok(new MessageResponse("Order completed successfully!"));
     }
 
     @GetMapping("/{id}")
