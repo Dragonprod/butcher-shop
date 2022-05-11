@@ -9,11 +9,9 @@ export default function ProductCard({ productCard }) {
       </div>
       <div className={styles.contentContainer}>
         <h3>{productCard.name}</h3>
-        <div>
+        <div className={styles.starsContainer}>
           {Array.from(Array(productCard.stars), (e, i) => (
-            <span className={styles.star} key={i}>
-              {i}
-            </span>
+            <span className={styles.star} key={i}></span>
           ))}
         </div>
         <p>{productCard.price}</p>

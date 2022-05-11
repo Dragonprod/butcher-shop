@@ -4,9 +4,16 @@
   border-radius: var(--border-radius);
 }
 
+.starsContainer {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
 .star {
-  background: orange;
+  display: block;
+  margin: 0 2px;
   width: 10px;
   height: 10px;
-  margin: 0 2px;
+  background: orange;
 }
