@@ -1,0 +1,19 @@
+.card {
+  padding: 12px;
+  background: var(--text-clr-3);
+  border-radius: var(--border-radius);
+}
+
+.starsContainer {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.star {
+  display: block;
+  margin: 0 2px;
+  width: 10px;
+  height: 10px;
+  background: orange;
+}
