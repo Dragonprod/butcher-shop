@@ -1,66 +1,31 @@
-package shop.butcher.backend.entity;
+package shop.butcher.backend.dto.request;
 
-import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
-import java.io.Serializable;
-
-@Entity
-@Table(name = "products")
-public class Product {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long id;
-
-    @ManyToOne
-    @JoinColumn(name="category_id", nullable=false)
-    @JsonBackReference
-    private Category category;
-
-    @Column(name = "name")
+public class ProductReequest {
+    @NotBlank
     private String name;
 
-    @Column(name = "description", columnDefinition="TEXT")
+    @NotBlank
     private String description;
 
-    @Column(name = "photo_url")
+    @NotBlank
     private String photoUrl;
 
-    @Column(name = "weight")
+    @NotBlank
     private double weight;
 
-    @Column(name = "expiration_date")
+    @NotBlank
     private int expirationDate;
 
-    @Column(name = "storage_conditions")
+    @NotBlank
     private String storageConditions;
 
-    @Column(name = "composition", columnDefinition="TEXT")
+    @NotBlank
     private String composition;
 
-    public Product() {
-    }
-
-    public Product(String name, String description, String photoUrl, double weight, int expirationDate, String storageConditions, String composition) {
-        this.name = name;
-        this.description = description;
-        this.photoUrl = photoUrl;
-        this.weight = weight;
-        this.expirationDate = expirationDate;
-        this.storageConditions = storageConditions;
-        this.composition = composition;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
+    @NotBlank
+    private String category;
 
     public String getName() {
         return name;
@@ -116,5 +81,13 @@ public class Product {
 
     public void setComposition(String composition) {
         this.composition = composition;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

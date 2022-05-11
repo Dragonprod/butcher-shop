@@ -1,5 +1,7 @@
 package shop.butcher.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -33,6 +35,7 @@ public class User {
     private Set<Role> roles = new HashSet<>();
 
     @OneToMany(mappedBy="user")
+    @JsonManagedReference
     private Set<Order> orders = new HashSet<>();
 
     public User() {
