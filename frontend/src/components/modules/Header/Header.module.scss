@@ -4,16 +4,46 @@
   top: 0;
   left: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
   background: var(--bg-clr-1);
   padding: 16px 26px;
   z-index: 5;
+
+  .contentContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: var(--max-width);
+  }
 }
 
 .nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 16px;
+
+  & a {
+    padding: 8px 24px;
+    color: var(--text-clr-2);
+    border-radius: var(--border-radius);
+    transition: color 0.3s;
+
+    &:hover {
+      color: var(--accent-clr-1);
+    }
+  }
+
+  .loginButton {
+    color: var(--bg-clr-1);
+    background: var(--accent-clr-1);
+    transition: background 0.3s;
+
+    &:hover {
+      color: var(--bg-clr-1);
+      background: var(--accent-clr-2);
+    }
+  }
 }
