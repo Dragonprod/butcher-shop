@@ -41,10 +41,13 @@ public class Product {
     @Column(name = "composition", columnDefinition="TEXT")
     private String composition;
 
+    @Column(name = "price")
+    private double price;
+
     public Product() {
     }
 
-    public Product(String name, String description, String photoUrl, double weight, int expirationDate, String storageConditions, String composition) {
+    public Product(String name, String description, String photoUrl, double weight, int expirationDate, String storageConditions, String composition, double price) {
         this.name = name;
         this.description = description;
         this.photoUrl = photoUrl;
@@ -52,6 +55,7 @@ public class Product {
         this.expirationDate = expirationDate;
         this.storageConditions = storageConditions;
         this.composition = composition;
+        this.price = price;
     }
 
     public Category getCategory() {
@@ -116,5 +120,13 @@ public class Product {
 
     public void setComposition(String composition) {
         this.composition = composition;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

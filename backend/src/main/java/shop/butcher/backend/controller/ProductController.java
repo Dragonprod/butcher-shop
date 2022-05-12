@@ -28,24 +28,25 @@ public class ProductController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<?> createProduct(@Valid @RequestBody ProductReequest productReequest) {
-        if (productRepository.existsByName(productReequest.getName())) {
+    public ResponseEntity<?> createProduct(@Valid @RequestBody ProductReequest productRequest) {
+        if (productRepository.existsByName(productRequest.getName())) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Name is already in use!"));
         }
 
         Product product = new Product(
-                productReequest.getName(),
-                productReequest.getDescription(),
-                productReequest.getPhotoUrl(),
-                productReequest.getWeight(),
-                productReequest.getExpirationDate(),
-                productReequest.getStorageConditions(),
-                productReequest.getComposition()
+                productRequest.getName(),
+                productRequest.getDescription(),
+                productRequest.getPhotoUrl(),
+                productRequest.getWeight(),
+                productRequest.getExpirationDate(),
+                productRequest.getStorageConditions(),
+                productRequest.getComposition(),
+                productRequest.getPrice()
         );
 
-        String category = productReequest.getCategory();
+        String category = productRequest.getCategory();
 
         if (category != null) {
             Category categoryObject = categoryRepository.findByName(category)

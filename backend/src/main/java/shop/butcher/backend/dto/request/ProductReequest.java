@@ -27,6 +27,9 @@ public class ProductReequest {
     @NotBlank
     private String category;
 
+    @NotBlank
+    private double price;
+
     public String getName() {
         return name;
     }
@@ -89,5 +92,13 @@ public class ProductReequest {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }
