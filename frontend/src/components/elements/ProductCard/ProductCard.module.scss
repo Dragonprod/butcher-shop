@@ -2,18 +2,9 @@
   padding: 12px;
   background: var(--text-clr-3);
   border-radius: var(--border-radius);
-}
+  box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
 
-.starsContainer {
-  display: flex;
-  justify-content: left;
-  align-items: center;
-}
-
-.star {
-  display: block;
-  margin: 0 2px;
-  width: 10px;
-  height: 10px;
-  background: orange;
+  .photoContainer img {
+    width: 250px;
+  }
 }
