@@ -12,11 +12,7 @@ export default function ProductCard({ productCard }) {
       </div>
       <div className={styles.contentContainer}>
         <h3>{productCard.name}</h3>
-        <div className={styles.starsContainer}>
-          {Array.from(Array(productCard.stars), (e, i) => (
-            <span className={styles.star} key={i}></span>
-          ))}
-        </div>
+        <p>Lorem ipsum</p>
         <p>{productCard.price}</p>
       </div>
       <button className={styles.contentContainer}>Добавить в корзину</button>
