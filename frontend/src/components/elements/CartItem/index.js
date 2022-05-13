@@ -4,7 +4,8 @@ import img1 from '../../../assets/images/1.png';
 import CloseIcon from '@mui/icons-material/Close';
 import { IconButton } from '@mui/material';
 
-export default function CartItem({ cartItem }) {
+export default function CartItem({ cartItem, onClick }) {
+
   return (
     <li className={styles.itemContainer}>
       <div className={styles.photoContainer}>
@@ -24,7 +25,7 @@ export default function CartItem({ cartItem }) {
         <h4>{cartItem.price} ₽</h4>
       </div>
       <div>
-        <IconButton aria-label='delete'>
+        <IconButton aria-label='delete' onClick={onClick}>
           <CloseIcon color='error' />
         </IconButton>
       </div>

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { Link } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 import CartItem from '../../elements/CartItem';
 import styles from './CartTable.module.scss';
 
@@ -39,20 +40,33 @@ export default function CartTable() {
   ];
   const [cartItems, setCartItems] = useState(defaultCartItems);
 
-  // TODO: Fetch Data
+  useEffect(() => {
+    // TODO: Fetch data
+  }, []);
+
+  const handleDelete = (id) => {
+    setCartItems(cartItems.filter(item => item.id !== id));
+  }
 
   return (
     <ul className={styles.table}>
-      <div className={styles.tableHeader}>
-        <h3>Фото</h3>
-        <h3>Описание</h3>
-        <h3>Цена</h3>
-        <h3>Количество</h3>
-        <h3>Сумма</h3>
-      </div>
-      {cartItems.map(cartItem => (
-        <CartItem key={cartItem.id} cartItem={cartItem} />
-      ))}
+      {cartItems.length > 0 ? (
+        <>
+          <div className={styles.tableHeader}>
+            <h3>Фото</h3>
+            <h3>Описание</h3>
+            <h3>Цена</h3>
+            <h3>Количество</h3>
+            <h3>Сумма</h3>
+          </div>
+          {cartItems.map(cartItem => (
+            <CartItem key={cartItem.id} cartItem={cartItem} onClick={() => handleDelete(cartItem.id)} />
+          ))}
+        </>
+      ) : (
+        <p>Вы ничего не добавили в корзину, давайте это <Link to='/'>исправим</Link></p>
+      )}
+
     </ul>
   );
 }
