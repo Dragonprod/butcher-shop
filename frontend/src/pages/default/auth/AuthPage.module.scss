@@ -1,0 +1,21 @@
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+
+  .imgContainer,
+  .formContainer {
+    display: grid;
+    place-content: center;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  .imgContainer {
+    background: var(--bg-clr-2);
+  }
+
+  .formContainer {
+  }
+}
