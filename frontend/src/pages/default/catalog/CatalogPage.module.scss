@@ -2,6 +2,8 @@
   display: grid;
   grid-template-rows: auto 1fr;
   gap: 24px;
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
 
 .goodsGrid {
