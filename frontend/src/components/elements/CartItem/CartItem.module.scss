@@ -1,7 +1,10 @@
 .itemContainer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
   align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
 
   .photoContainer {
     img {
