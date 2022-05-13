@@ -7,6 +7,13 @@ export default function AuthPage() {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
 
+  const handleLoginChange = e => {
+    setLogin(e.target.value);
+  }
+  const handlePasswordChange = e => {
+    setPassword(e.target.value);
+  }
+
   function handleSubmit() {
     console.log(login, password);
   }
@@ -21,7 +28,7 @@ export default function AuthPage() {
         <form autoComplete='off' onSubmit={handleSubmit}>
           <TextField
             className={styles.login}
-            onChange={e => setLogin(e.target.value)}
+            onChange={handleLoginChange}
             label='Логин'
             variant='outlined'
             required
@@ -29,14 +36,14 @@ export default function AuthPage() {
             margin='normal'
             sx={{
               '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
-                {
-                  borderColor: '#ff683a',
-                },
+              {
+                borderColor: '#ff683a',
+              },
             }}
           />
           <TextField
             className={styles.password}
-            onChange={e => setPassword(e.target.value)}
+            onChange={handlePasswordChange}
             label='Пароль'
             variant='outlined'
             type='password'
@@ -45,9 +52,9 @@ export default function AuthPage() {
             margin='normal'
             sx={{
               '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
-                {
-                  borderColor: '#ff683a',
-                },
+              {
+                borderColor: '#ff683a',
+              },
             }}
           />
           <Button
