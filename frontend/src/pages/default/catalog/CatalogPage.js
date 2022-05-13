@@ -9,13 +9,13 @@ export default function CatalogPage() {
   return (
     <>
       <Header />
-      <div className={styles.mainGrid}>
+      <main className={styles.mainGrid}>
         <Banner />
         <div className={styles.goodsGrid}>
           <CategoriesList />
           <ProductCards />
         </div>
-      </div>
+      </main>
       <Footer />
     </>
   );
