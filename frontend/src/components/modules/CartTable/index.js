@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import CartItem from '../../elements/CartItem';
 import styles from './CartTable.module.scss';
 
 export default function CartTable() {
@@ -7,6 +8,7 @@ export default function CartTable() {
       id: 0,
       name: 'Бутер',
       description: 'Lorem ipsum',
+      weight: 0.5,
       photoPath: '../../../assets/images/1.png',
       price: 100,
     },
@@ -14,6 +16,7 @@ export default function CartTable() {
       id: 1,
       name: 'Бургер',
       description: 'Lorem ipsum',
+      weight: 0.5,
       photoPath: '../../../assets/images/1.png',
       price: 120,
     },
@@ -21,6 +24,7 @@ export default function CartTable() {
       id: 2,
       name: 'Стейк говядины',
       description: 'Lorem ipsum',
+      weight: 0.5,
       photoPath: '../../../assets/images/1.png',
       price: 130,
     },
@@ -28,6 +32,7 @@ export default function CartTable() {
       id: 3,
       name: 'Бараньи рёбра',
       description: 'Lorem ipsum',
+      weight: 0.5,
       photoPath: '../../../assets/images/1.png',
       price: 140,
     },
@@ -39,7 +44,7 @@ export default function CartTable() {
   return (
     <ul className={styles.table}>
       {cartItems.map(cartItem => (
-        <div key={cartItem.id}></div>
+        <CartItem key={cartItem.id} cartItem={cartItem} />
       ))}
     </ul>
   );
