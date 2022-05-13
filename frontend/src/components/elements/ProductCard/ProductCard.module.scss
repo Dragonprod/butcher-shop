@@ -6,13 +6,13 @@
 
   .photoContainer {
     display: grid;
-    place-content: center;
+    justify-items: center;
     padding: 8px;
     // background: var(--bg-clr-1);
     background: var(--bg-clr-2);
 
     img {
-      width: 250px;
+      width: 90%;
     }
   }
 
