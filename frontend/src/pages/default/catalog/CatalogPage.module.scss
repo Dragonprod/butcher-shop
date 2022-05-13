@@ -1,0 +1,11 @@
+.mainGrid {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 24px;
+}
+
+.goodsGrid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 24px;
+}
