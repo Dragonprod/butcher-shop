@@ -1,4 +1,4 @@
-import { Link } from '@mui/material';
+import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import CartItem from '../../elements/CartItem';
 import styles from './CartTable.module.scss';
@@ -44,14 +44,14 @@ export default function CartTable() {
     // TODO: Fetch data
   }, []);
 
-  const handleDelete = (id) => {
+  const handleDelete = id => {
     setCartItems(cartItems.filter(item => item.id !== id));
-  }
+  };
 
   return (
-    <ul className={styles.table}>
+    <>
       {cartItems.length > 0 ? (
-        <>
+        <ul className={styles.table}>
           <div className={styles.tableHeader}>
             <h3>Фото</h3>
             <h3>Описание</h3>
@@ -60,13 +60,24 @@ export default function CartTable() {
             <h3>Сумма</h3>
           </div>
           {cartItems.map(cartItem => (
-            <CartItem key={cartItem.id} cartItem={cartItem} onClick={() => handleDelete(cartItem.id)} />
+            <CartItem
+              key={cartItem.id}
+              cartItem={cartItem}
+              onClick={() => handleDelete(cartItem.id)}
+            />
           ))}
-        </>
+        </ul>
       ) : (
-        <p>Вы ничего не добавили в корзину, давайте это <Link to='/'>исправим</Link></p>
+        <>
+          <h2 className={styles.emptyCartTitle}>Ваша корзина пуста</h2>
+          <h2 className={styles.emptyCartTitle}>
+            Мы уверены, для Вас найдётся что-то подходящее в нашем{' '}
+            <Link className={styles.redirect} to='/'>
+              Каталоге
+            </Link>
+          </h2>
+        </>
       )}
-
-    </ul>
+    </>
   );
 }

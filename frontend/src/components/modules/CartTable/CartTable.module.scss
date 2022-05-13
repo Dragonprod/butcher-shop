@@ -16,3 +16,17 @@
     }
   }
 }
+
+.emptyCartTitle {
+  text-align: center;
+  color: var(--text-clr-2);
+}
+
+.redirect {
+  color: var(--accent-clr-1);
+  font-size: inherit;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
