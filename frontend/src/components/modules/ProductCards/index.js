@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './ProductCards.module.scss';
 import ProductCard from '../../elements/ProductCard';
 
 export default function ProductCards() {
-  let productCards = [
+  let defaultProductCards = [
     {
       id: 0,
       name: 'Бутер',
@@ -33,6 +33,7 @@ export default function ProductCards() {
       price: 140,
     },
   ];
+  const [productCards, setProductCards] = useState(defaultProductCards);
 
   return (
     <div className={styles.grid}>
