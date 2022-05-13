@@ -13,7 +13,14 @@
   }
 
   .imgContainer {
+    justify-items: center;
     background: var(--bg-clr-2);
+
+    img {
+      width: 80%;
+      border-radius: var(--border-radius);
+      box-shadow: 0px 10px 10px 2px rgba(0, 0, 0, 0.25);
+    }
   }
 
   .formContainer {

@@ -1,6 +1,7 @@
 import { Button, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import styles from './AuthPage.module.scss';
+import img1 from '../../../assets/images/login0.jpg';
 
 export default function AuthPage() {
   const [login, setLogin] = useState('');
@@ -12,7 +13,9 @@ export default function AuthPage() {
 
   return (
     <section className={styles.mainGrid}>
-      <div className={styles.imgContainer}>Photo</div>
+      <div className={styles.imgContainer}>
+        <img src={img1} alt='Meat' />
+      </div>
       <div className={styles.formContainer}>
         <form autoComplete='off' onSubmit={handleSubmit}>
           <TextField
