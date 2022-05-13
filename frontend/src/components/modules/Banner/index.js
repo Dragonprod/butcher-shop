@@ -1,5 +1,6 @@
 import styles from './Banner.module.scss';
 import React from 'react';
+import bannerImg from '../../../assets/images/banner.png';
 
 export default function Banner() {
   return (
@@ -17,6 +18,7 @@ export default function Banner() {
           aliquip ex ea commodo consequat.
         </p>
       </div>
+      <img className={styles.bannerImg} src={bannerImg} alt='Meatballs' />
     </div>
   );
 }
