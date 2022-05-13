@@ -1,13 +1,9 @@
 .mainGrid {
   display: grid;
   grid-template-rows: auto 1fr;
-  gap: 24px;
+  gap: 64px;
+  padding: calc(72px + 48px) 0 72px;
+  margin: 0 auto;
   max-width: var(--max-width);
-  margin: calc(72px + 24px) auto;
-}
-
-.goodsGrid {
-  display: grid;
-  grid-template-columns: 360px 1fr;
-  gap: 24px;
+  min-height: calc(100vh - 72px);
 }

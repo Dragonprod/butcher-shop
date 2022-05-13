@@ -1,6 +1,17 @@
-.grid {
+.productsGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  // padding: 16px;
+  margin: 24px 0 0;
+}
+
+.categoryContainer {
+  h2 {
+    margin: 0 0 24px;
+  }
+}
+
+.test {
+  display: grid;
+  gap: 128px;
 }
