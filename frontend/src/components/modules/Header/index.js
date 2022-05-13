@@ -1,9 +1,11 @@
 import styles from './Header.module.scss';
-import React from 'react';
+import React, { useState } from 'react';
 import Logo from '../../elements/Logo';
 import { Link } from 'react-router-dom';
 
 export default function Header() {
+  const [isAdmin, setisAdmin] = useState(false);
+  
   return (
     <header className={styles.header}>
       <div className={styles.contentContainer}>
@@ -16,6 +18,11 @@ export default function Header() {
           <Link to='/login' className={styles.loginButton}>
             Войти
           </Link>
+          {isAdmin && (
+            <Link to='/admin' className={styles.loginButton}>
+              Админ.панель
+            </Link>
+          )}
         </nav>
       </div>
     </header>
