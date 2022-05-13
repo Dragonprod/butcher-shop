@@ -14,7 +14,7 @@ export default function ProductCard({ productCard }) {
         <h3>{productCard.name}</h3>
         <p>Lorem ipsum</p>
         <div className={styles.priceContainer}>
-          <h4>{productCard.price} руб</h4>
+          <h4>{productCard.price} ₽</h4>
           <button className={styles.cartButton}>В корзину</button>
         </div>
       </div>
