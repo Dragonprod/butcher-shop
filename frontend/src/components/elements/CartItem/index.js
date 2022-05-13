@@ -3,6 +3,7 @@ import styles from './CartItem.module.scss';
 import img1 from '../../../assets/images/1.png';
 import CloseIcon from '@mui/icons-material/Close';
 import { IconButton } from '@mui/material';
+import Counter from '../Counter';
 
 export default function CartItem({ cartItem, onClick }) {
 
@@ -19,7 +20,7 @@ export default function CartItem({ cartItem, onClick }) {
         <h4>{cartItem.price} ₽</h4>
       </div>
       <div className={styles.counterContainer}>
-        <div></div>
+        <Counter />
       </div>
       <div className={styles.sumContainer}>
         <h4>{cartItem.price} ₽</h4>
