@@ -43,6 +43,11 @@ export default function CartTable() {
 
   return (
     <ul className={styles.table}>
+      <div className={styles.tableHeader}>
+        <h3>Фото</h3>
+        <h3>Описание</h3>
+        <h3>Цена</h3>
+      </div>
       {cartItems.map(cartItem => (
         <CartItem key={cartItem.id} cartItem={cartItem} />
       ))}
