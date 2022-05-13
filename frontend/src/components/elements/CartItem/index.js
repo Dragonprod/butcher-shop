@@ -12,7 +12,7 @@ export default function CartItem({ cartItem }) {
       </div>
       <div className={styles.contentContainer}>
         <h3>{cartItem.name}</h3>
-        <p>{cartItem.weight}</p>
+        <p>{cartItem.weight} кг</p>
       </div>
       <div className={styles.priceContainer}>
         <h4>{cartItem.price} ₽</h4>
