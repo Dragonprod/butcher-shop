@@ -17,6 +17,7 @@ export default function AuthPage() {
         <img src={img1} alt='Meat' />
       </div>
       <div className={styles.formContainer}>
+        <h2>Вход в Аккаунт</h2>
         <form autoComplete='off' onSubmit={handleSubmit}>
           <TextField
             className={styles.login}
