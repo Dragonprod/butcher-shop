@@ -35,6 +35,8 @@ export default function ProductCards() {
   ];
   const [productCards, setProductCards] = useState(defaultProductCards);
 
+  // TODO: Fetch Data
+
   return (
     <div className={styles.grid}>
       {productCards.map(productCard => (

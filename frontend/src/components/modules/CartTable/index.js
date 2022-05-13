@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './CartTable.module.scss';
 
 export default function CartTable() {
-  let cartItems = [
+  let defaultCartItems = [
     {
       id: 0,
       name: 'Бутер',
@@ -32,6 +32,7 @@ export default function CartTable() {
       price: 140,
     },
   ];
+  const [cartItems, setCartItems] = useState(defaultCartItems);
 
   return (
     <div className={styles.table}>

@@ -6,6 +6,7 @@ import ProductCards from '../../../components/modules/ProductCards';
 import styles from './CatalogPage.module.scss';
 
 export default function CatalogPage() {
+  // TODO: Remake Categories Template
   return (
     <>
       <Header />
