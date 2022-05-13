@@ -1,4 +1,4 @@
-import { Button, TextField } from '@mui/material';
+import { Alert, AlertTitle, Snackbar, Button, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import styles from './AuthPage.module.scss';
 import img1 from '../../../assets/images/login0.jpg';
@@ -6,16 +6,27 @@ import img1 from '../../../assets/images/login0.jpg';
 export default function AuthPage() {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(false);
 
   const handleLoginChange = e => {
     setLogin(e.target.value);
   }
+
   const handlePasswordChange = e => {
     setPassword(e.target.value);
   }
 
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setError(false);
+  };
+
   function handleSubmit() {
     console.log(login, password);
+    if(login !== '1')
+      setError(true);
   }
 
   return (
@@ -66,6 +77,21 @@ export default function AuthPage() {
           </Button>
         </form>
       </div>
+      <Snackbar
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        open={error}
+        autoHideDuration={3000}
+        onClose={handleClose}
+      >
+        <Alert
+          severity="error"
+          onClose={handleClose}
+          sx={{ width: "100%" }}
+        >
+          <AlertTitle>Ошибка</AlertTitle>
+          Проверьте — <strong>логин или пароль!</strong>
+        </Alert>
+      </Snackbar>
     </section>
   );
 }
