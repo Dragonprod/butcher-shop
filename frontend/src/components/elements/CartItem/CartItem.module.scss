@@ -1,14 +1,17 @@
 .itemContainer {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  justify-items: center;
+  grid-template-columns: 1fr 1fr 1fr auto;
   align-items: center;
-  padding: 12px;
+  padding: 12px 24px;
   border-bottom: 1px solid #ddd;
 
   .photoContainer {
     img {
       max-width: 200px;
     }
+  }
+
+  &:last-child {
+    border: none;
   }
 }
