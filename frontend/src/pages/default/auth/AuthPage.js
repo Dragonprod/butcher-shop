@@ -23,11 +23,13 @@ export default function AuthPage() {
     setError(false);
   };
 
-  function handleSubmit() {
+  const handleSubmit = e => {
+    e.preventDefault();
     console.log(login, password);
     if(login !== '1')
       setError(true);
   }
+
 
   return (
     <section className={styles.mainGrid}>
