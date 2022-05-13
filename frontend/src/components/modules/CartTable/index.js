@@ -34,11 +34,13 @@ export default function CartTable() {
   ];
   const [cartItems, setCartItems] = useState(defaultCartItems);
 
+  // TODO: Fetch Data
+
   return (
-    <div className={styles.table}>
+    <ul className={styles.table}>
       {cartItems.map(cartItem => (
         <div key={cartItem.id}></div>
       ))}
-    </div>
+    </ul>
   );
 }
