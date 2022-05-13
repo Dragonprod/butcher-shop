@@ -29,6 +29,10 @@
       font-size: 20px;
     }
 
+    p {
+      color: var(--text-clr-2);
+    }
+
     .priceContainer {
       display: flex;
       justify-content: space-between;
