@@ -1,10 +1,55 @@
 .card {
-  padding: 12px;
+  // padding: 12px;
   background: var(--text-clr-3);
   border-radius: var(--border-radius);
   box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
+  // display: grid;
+  // grid-auto-rows: 1.5fr 1fr;
 
-  .photoContainer img {
-    width: 250px;
+  .photoContainer {
+    display: grid;
+    place-content: center;
+    padding: 8px;
+    // background: var(--bg-clr-1);
+    background: var(--bg-clr-2);
+
+    img {
+      width: 250px;
+    }
+  }
+
+  .contentContainer {
+    padding: 12px;
+    // margin: 24px 0 0;
+
+    h3 {
+      font-weight: 700;
+      font-size: 24px;
+    }
+
+    h4 {
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .priceContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 18px 0 0;
+    }
+  }
+}
+
+.cartButton {
+  padding: 12px 24px;
+
+  color: var(--bg-clr-1);
+  background: var(--accent-clr-1);
+  border-radius: var(--border-radius);
+  transition: background 0.3s;
+
+  &:hover {
+    background: var(--accent-clr-2);
   }
 }

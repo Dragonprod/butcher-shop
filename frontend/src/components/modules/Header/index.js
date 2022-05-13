@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function Header() {
   return (
-    <div className={styles.header}>
+    <header className={styles.header}>
       <div className={styles.contentContainer}>
         <Link to='/'>
           <Logo />
@@ -18,6 +18,6 @@ export default function Header() {
           </Link>
         </nav>
       </div>
-    </div>
+    </header>
   );
 }
