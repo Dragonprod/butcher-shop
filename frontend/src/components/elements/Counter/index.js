@@ -7,7 +7,9 @@ import AddIcon from '@mui/icons-material/Add';
 export default function Counter() {
   const [amount, setAmount] = useState(1);
 
-  const handleDecrease = () => setAmount(prevAmount => prevAmount - 1);
+  const handleDecrease = () => {
+    if (amount > 1) setAmount(prevAmount => prevAmount - 1);
+  };
   const handleIncrease = () => setAmount(prevAmount => prevAmount + 1);
 
   return (
