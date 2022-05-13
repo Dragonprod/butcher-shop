@@ -47,6 +47,8 @@ export default function CartTable() {
         <h3>Фото</h3>
         <h3>Описание</h3>
         <h3>Цена</h3>
+        <h3>Количество</h3>
+        <h3>Сумма</h3>
       </div>
       {cartItems.map(cartItem => (
         <CartItem key={cartItem.id} cartItem={cartItem} />

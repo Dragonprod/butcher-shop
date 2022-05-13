@@ -17,6 +17,12 @@ export default function CartItem({ cartItem }) {
       <div className={styles.priceContainer}>
         <h4>{cartItem.price} ₽</h4>
       </div>
+      <div className={styles.counterContainer}>
+        <div></div>
+      </div>
+      <div className={styles.sumContainer}>
+        <h4>{cartItem.price} ₽</h4>
+      </div>
       <div>
         <IconButton aria-label='delete'>
           <CloseIcon color='error' />
