@@ -19,3 +19,14 @@
   .formContainer {
   }
 }
+
+.login,
+.password {
+  label[data-shrink='true'] {
+    color: var(--accent-clr-1) !important;
+  }
+}
+
+.submit:hover {
+  background-color: var(--accent-clr-2) !important;
+}
