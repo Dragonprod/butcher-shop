@@ -4,8 +4,9 @@ import { AuthContext } from './context';
 import CatalogPage from './pages/default/catalog/CatalogPage';
 import AuthPage from './pages/default/auth/AuthPage';
 import CartPage from './pages/user/cart/CartPage';
-import ProtectedRoute from './components/elements/ProtectedRoute'; 
+import ProtectedRoute from './components/elements/ProtectedRoute';
 import LogoutPage from './pages/default/auth/LogoutPage';
+import UIContextProvider from './context/UIContext';
 
 function App() {
   const [isAuth, setisAuth] = useState(false);
@@ -18,25 +19,26 @@ function App() {
 
   return (
     <AuthContext.Provider value={{ isAuth, setisAuth }}>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            exact
-            path='/cart'
-            element={
-              <ProtectedRoute>
-                <CartPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route exact path='/' element={<CatalogPage />} />
-          <Route exact path='/login' element={<AuthPage />} />
-          <Route exact path='/logout' element={<LogoutPage />} />
-          {/* <Route exact path='/cart' element={<CartPage />} /> */}
-        </Routes>
-      </BrowserRouter>
+      <UIContextProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route
+              exact
+              path='/cart'
+              element={
+                <ProtectedRoute>
+                  <CartPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route exact path='/' element={<CatalogPage />} />
+            <Route exact path='/login' element={<AuthPage />} />
+            <Route exact path='/logout' element={<LogoutPage />} />
+            {/* <Route exact path='/cart' element={<CartPage />} /> */}
+          </Routes>
+        </BrowserRouter>
+      </UIContextProvider>
     </AuthContext.Provider>
-
   );
 }
 
