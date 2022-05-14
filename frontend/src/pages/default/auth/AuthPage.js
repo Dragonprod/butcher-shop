@@ -21,6 +21,10 @@ export default function AuthPage() {
     setPassword(e.target.value);
   };
 
+  const handleSwitchChange = e => {
+    setIsLoginForm(!isLoginForm);
+  };
+
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -48,12 +52,12 @@ export default function AuthPage() {
         <div className={styles.titlesContainer}>
           <h2
             className={`${isLoginForm && styles.active}`}
-            onClick={() => setIsLoginForm(true)}>
+            onClick={handleSwitchChange}>
             Вход
           </h2>
           <h2
             className={`${!isLoginForm && styles.active}`}
-            onClick={() => setIsLoginForm(false)}>
+            onClick={handleSwitchChange}>
             Регистрация
           </h2>
         </div>
