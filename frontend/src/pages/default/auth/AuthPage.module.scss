@@ -3,8 +3,8 @@
   grid-template-columns: 1fr 1fr;
   height: 100vh;
 
-  .imgContainer,
-  .formContainer {
+  .imgColumnContainer,
+  .formColumnContainer {
     display: grid;
     place-content: center;
 
@@ -12,7 +12,7 @@
     height: 100%;
   }
 
-  .imgContainer {
+  .imgColumnContainer {
     justify-items: center;
     background: var(--bg-clr-2);
 
@@ -24,6 +24,10 @@
   }
 
   .formContainer {
+    position: relative;
+    width: 394px;
+    transform: translateY(-128px);
+
     .titlesContainer {
       display: flex;
       justify-content: center;
@@ -32,7 +36,7 @@
       margin: 0 0 16px;
 
       h2 {
-        color: var(--text-clr-2);
+        color: #25222c80;
         transition: color 0.3s;
         cursor: pointer;
 
@@ -40,6 +44,11 @@
           color: var(--text-clr-1);
         }
       }
+    }
+
+    .tip {
+      text-align: center;
+      margin: 0 0 32px;
     }
   }
 }
@@ -53,4 +62,19 @@
 
 .submit:hover {
   background-color: var(--accent-clr-2) !important;
+}
+
+.form {
+  position: absolute;
+  top: 132px;
+  left: 0;
+  max-width: 394px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
 }
