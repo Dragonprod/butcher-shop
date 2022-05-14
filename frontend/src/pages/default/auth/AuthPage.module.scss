@@ -24,8 +24,22 @@
   }
 
   .formContainer {
-    h2 {
+    .titlesContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
       margin: 0 0 16px;
+
+      h2 {
+        color: var(--text-clr-2);
+        transition: color 0.3s;
+        cursor: pointer;
+
+        &.active {
+          color: var(--text-clr-1);
+        }
+      }
     }
   }
 }

@@ -11,17 +11,18 @@ export default function AuthPage() {
   const [error, setError] = useState(false);
   const { setisAuth } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [isLoginForm, setIsLoginForm] = useState(true);
 
   const handleLoginChange = e => {
     setLogin(e.target.value);
-  }
+  };
 
   const handlePasswordChange = e => {
     setPassword(e.target.value);
-  }
+  };
 
   const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
+    if (reason === 'clickaway') {
       return;
     }
     setError(false);
@@ -29,17 +30,14 @@ export default function AuthPage() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (login === "1" && password === "1") {
+    if (login === '1' && password === '1') {
       localStorage.setItem('isAuth', 'true');
       setisAuth(true);
       navigate('/');
-    }
-    else {
+    } else {
       setError(true);
     }
-
-  }
-
+  };
 
   return (
     <section className={styles.mainGrid}>
@@ -47,7 +45,18 @@ export default function AuthPage() {
         <img src={img1} alt='Meat' />
       </div>
       <div className={styles.formContainer}>
-        <h2>Вход в Аккаунт</h2>
+        <div className={styles.titlesContainer}>
+          <h2
+            className={`${isLoginForm && styles.active}`}
+            onClick={() => setIsLoginForm(true)}>
+            Вход
+          </h2>
+          <h2
+            className={`${!isLoginForm && styles.active}`}
+            onClick={() => setIsLoginForm(false)}>
+            Регистрация
+          </h2>
+        </div>
         <form autoComplete='off' onSubmit={handleSubmit}>
           <TextField
             className={styles.login}
@@ -59,9 +68,9 @@ export default function AuthPage() {
             margin='normal'
             sx={{
               '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
-              {
-                borderColor: '#ff683a',
-              },
+                {
+                  borderColor: '#ff683a',
+                },
             }}
           />
           <TextField
@@ -75,9 +84,9 @@ export default function AuthPage() {
             margin='normal'
             sx={{
               '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
-              {
-                borderColor: '#ff683a',
-              },
+                {
+                  borderColor: '#ff683a',
+                },
             }}
           />
           <Button
@@ -90,16 +99,11 @@ export default function AuthPage() {
         </form>
       </div>
       <Snackbar
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         open={error}
         autoHideDuration={3000}
-        onClose={handleClose}
-      >
-        <Alert
-          severity="error"
-          onClose={handleClose}
-          sx={{ width: "100%" }}
-        >
+        onClose={handleClose}>
+        <Alert severity='error' onClose={handleClose} sx={{ width: '100%' }}>
           <AlertTitle>Ошибка</AlertTitle>
           Проверьте — <strong>логин или пароль!</strong>
         </Alert>
