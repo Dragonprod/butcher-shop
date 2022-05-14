@@ -1,12 +1,16 @@
 import { Alert, AlertTitle, Snackbar, Button, TextField } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './AuthPage.module.scss';
 import img1 from '../../../assets/images/login0.jpg';
+import { AuthContext } from '../../../context';
 
 export default function AuthPage() {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
+  const { setisAuth } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleLoginChange = e => {
     setLogin(e.target.value);
@@ -25,9 +29,15 @@ export default function AuthPage() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(login, password);
-    if(login !== '1')
+    if (login === "1" && password === "1") {
+      localStorage.setItem('isAuth', 'true');
+      setisAuth(true);
+      navigate('/');
+    }
+    else {
       setError(true);
+    }
+
   }
 
 

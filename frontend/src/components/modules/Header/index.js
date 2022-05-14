@@ -1,11 +1,12 @@
 import styles from './Header.module.scss';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../../../context';
 import Logo from '../../elements/Logo';
 import { Link } from 'react-router-dom';
 
 export default function Header() {
   const [isAdmin, setisAdmin] = useState(false);
-  
+  const { isAuth } = useContext(AuthContext);
   return (
     <header className={styles.header}>
       <div className={styles.contentContainer}>
@@ -15,9 +16,12 @@ export default function Header() {
         <nav className={styles.nav}>
           <Link to='/'>Каталог</Link>
           <Link to='/cart'>Корзина</Link>
-          <Link to='/login' className={styles.loginButton}>
+          {isAuth ? (<Link to='/logout' className={styles.loginButton}>
+            Выйти
+          </Link>) : (<Link to='/login' className={styles.loginButton}>
             Войти
-          </Link>
+          </Link>)}
+
           {isAdmin && (
             <Link to='/admin' className={styles.loginButton}>
               Админ.панель

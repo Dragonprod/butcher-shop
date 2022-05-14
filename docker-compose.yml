@@ -24,7 +24,6 @@ services:
   #     context: ./frontend
   #     dockerfile: Dockerfile
   #   environment:
-  #     FRONTEND_DEBUG_MODE: ${FRONTEND_DEBUG_MODE}
   #     FRONTEND_PRODUCTION_URL: ${FRONTEND_PRODUCTION_URL}
   #   depends_on:
   #     - backend

@@ -5,9 +5,10 @@ import ProductCards from '../../../components/modules/ProductCards';
 import styles from './CatalogPage.module.scss';
 
 export default function CatalogPage() {
+  
   return (
     <>
-      <Header />
+      <Header/>
       <main className={styles.mainGrid}>
         <Banner />
         <ProductCards />

@@ -1,18 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { AuthContext } from './context';
 import CatalogPage from './pages/default/catalog/CatalogPage';
 import AuthPage from './pages/default/auth/AuthPage';
 import CartPage from './pages/user/cart/CartPage';
+import ProtectedRoute from './components/elements/ProtectedRoute'; 
+import LogoutPage from './pages/default/auth/LogoutPage';
 
 function App() {
+  const [isAuth, setisAuth] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem('isAuth')) {
+      setisAuth(true);
+    }
+  }, []);
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route exact path='/' element={<CatalogPage />} />
-        <Route exact path='/login' element={<AuthPage />} />
-        <Route exact path='/cart' element={<CartPage />} />
-      </Routes>
-    </BrowserRouter>
+    <AuthContext.Provider value={{ isAuth, setisAuth }}>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            exact
+            path='/cart'
+            element={
+              <ProtectedRoute>
+                <CartPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route exact path='/' element={<CatalogPage />} />
+          <Route exact path='/login' element={<AuthPage />} />
+          <Route exact path='/logout' element={<LogoutPage />} />
+          {/* <Route exact path='/cart' element={<CartPage />} /> */}
+        </Routes>
+      </BrowserRouter>
+    </AuthContext.Provider>
+
   );
 }
 

@@ -32,9 +32,6 @@ export default function CategoriesList() {
           <ListItemText primary='Котлеты' />
         </ListItemButton>
         <ListItemButton onClick={handleClick}>
-          {/* <ListItemIcon>
-            <StarBorder />
-          </ListItemIcon> */}
           <ListItemText primary='Стейки' />
           {open ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
