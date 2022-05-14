@@ -13,8 +13,6 @@ export default function AuthPage() {
   const navigate = useNavigate();
   const [isLoginForm, setIsLoginForm] = useState(true);
 
-  const toggleForm = () => {};
-
   const handleLoginChange = e => {
     setLogin(e.target.value);
   };
