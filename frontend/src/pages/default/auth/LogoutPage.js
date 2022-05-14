@@ -3,18 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context';
 
 export default function LogoutPage() {
-    const { setisAuth } = useContext(AuthContext);
-    const navigate = useNavigate();
+  const { setisAuth } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        setisAuth(false);
-        localStorage.setItem('isAuth', 'false');
-        navigate('/');
+  useEffect(() => {
+    setisAuth(false);
+    localStorage.setItem('isAuth', 'false');
+    navigate('/');
+  }, [setisAuth, navigate]);
 
-    }, [setisAuth, navigate]);
-
-    return (
-        <p>Выполняется выход...</p>
-    );
-
+  return <p>Выполняется выход...</p>;
 }

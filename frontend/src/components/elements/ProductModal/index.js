@@ -1,6 +1,5 @@
-import React from 'react';
 import Modal from '../Modal';
-import styles from './CatalogPage.module.scss';
+import styles from './ProductModal.module.scss';
 import img1 from '../../../assets/images/1.png';
 
 export default function ProductModal() {

@@ -1,3 +1,4 @@
+import ProductModal from '../../../components/elements/ProductModal';
 import Banner from '../../../components/modules/Banner';
 import Footer from '../../../components/modules/Footer';
 import Header from '../../../components/modules/Header';
@@ -8,6 +9,7 @@ export default function CatalogPage() {
   return (
     <>
       <Header />
+      <ProductModal />
       <main className={styles.mainGrid}>
         <Banner />
         <ProductCards />
