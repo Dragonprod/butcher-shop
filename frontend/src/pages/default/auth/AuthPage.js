@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from './AuthPage.module.scss';
 import img1 from '../../../assets/images/login0.jpg';
 import { AuthContext } from '../../../context';
+import { LOGIN, REGISTER } from '../../../constants';
 
 export default function AuthPage() {
   const [login, setLogin] = useState('');
@@ -12,6 +13,11 @@ export default function AuthPage() {
   const { setisAuth } = useContext(AuthContext);
   const navigate = useNavigate();
   const [isLoginForm, setIsLoginForm] = useState(true);
+
+  const toggleForm = formType => {
+    if (formType === LOGIN) setIsLoginForm(true);
+    if (formType === REGISTER) setIsLoginForm(false);
+  };
 
   const handleLoginChange = e => {
     setLogin(e.target.value);
@@ -50,12 +56,12 @@ export default function AuthPage() {
             <div className={styles.titlesContainer}>
               <h2
                 className={`${isLoginForm && styles.active}`}
-                onClick={() => setIsLoginForm(true)}>
+                onClick={() => toggleForm(LOGIN)}>
                 Вход
               </h2>
               <h2
                 className={`${!isLoginForm && styles.active}`}
-                onClick={() => setIsLoginForm(false)}>
+                onClick={() => toggleForm(REGISTER)}>
                 Регистрация
               </h2>
             </div>
@@ -122,6 +128,9 @@ export default function AuthPage() {
                   width: '100%',
                   borderRadius: '30px',
                   padding: '16px',
+                  textTransform: 'capitalize',
+                  fontSize: '16px',
+                  lineHeight: '145%',
                 },
               }}>
               Войти
@@ -204,6 +213,9 @@ export default function AuthPage() {
                   width: '100%',
                   borderRadius: '30px',
                   padding: '16px',
+                  textTransform: 'capitalize',
+                  fontSize: '16px',
+                  lineHeight: '145%',
                 },
               }}>
               Зарегистрироваться
