@@ -3,8 +3,9 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../../context';
 import Logo from '../../elements/Logo';
 import { Link } from 'react-router-dom';
+import { AUTH_PAGE } from '../../../constants';
 
-export default function Header() {
+export default function Header({ page = '' }) {
   const [isAdmin, setisAdmin] = useState(false);
   const { isAuth } = useContext(AuthContext);
   return (
@@ -15,12 +16,20 @@ export default function Header() {
         </Link>
         <nav className={styles.nav}>
           <Link to='/'>Каталог</Link>
-          <Link to='/cart'>Корзина</Link>
-          {isAuth ? (<Link to='/logout' className={styles.loginButton}>
-            Выйти
-          </Link>) : (<Link to='/login' className={styles.loginButton}>
-            Войти
-          </Link>)}
+          {page === AUTH_PAGE ? null : (
+            <>
+              <Link to='/cart'>Корзина</Link>
+              {isAuth ? (
+                <Link to='/logout' className={styles.loginButton}>
+                  Выйти
+                </Link>
+              ) : (
+                <Link to='/login' className={styles.loginButton}>
+                  Войти
+                </Link>
+              )}
+            </>
+          )}
 
           {isAdmin && (
             <Link to='/admin' className={styles.loginButton}>

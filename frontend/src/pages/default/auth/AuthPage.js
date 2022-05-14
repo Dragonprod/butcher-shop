@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import styles from './AuthPage.module.scss';
 import img1 from '../../../assets/images/login0.jpg';
 import { AuthContext } from '../../../context';
-import { LOGIN, REGISTER } from '../../../constants';
+import { AUTH_PAGE, LOGIN, REGISTER } from '../../../constants';
+import Header from '../../../components/modules/Header';
 
 export default function AuthPage() {
   const [login, setLogin] = useState('');
@@ -46,193 +47,196 @@ export default function AuthPage() {
   };
 
   return (
-    <section className={styles.mainGrid}>
-      <div className={styles.imgColumnContainer}>
-        <img src={img1} alt='Meat' />
-      </div>
-      <div className={styles.formColumnContainer}>
-        <div className={styles.formContainer}>
-          <div>
-            <div className={styles.titlesContainer}>
-              <h2
-                className={`${isLoginForm && styles.active}`}
-                onClick={() => toggleForm(LOGIN)}>
-                Вход
-              </h2>
-              <h2
-                className={`${!isLoginForm && styles.active}`}
-                onClick={() => toggleForm(REGISTER)}>
-                Регистрация
-              </h2>
+    <>
+      <Header page={AUTH_PAGE} />
+      <section className={styles.mainGrid}>
+        <div className={styles.imgColumnContainer}>
+          <img src={img1} alt='Meat' />
+        </div>
+        <div className={styles.formColumnContainer}>
+          <div className={styles.formContainer}>
+            <div>
+              <div className={styles.titlesContainer}>
+                <h2
+                  className={`${isLoginForm && styles.active}`}
+                  onClick={() => toggleForm(LOGIN)}>
+                  Вход
+                </h2>
+                <h2
+                  className={`${!isLoginForm && styles.active}`}
+                  onClick={() => toggleForm(REGISTER)}>
+                  Регистрация
+                </h2>
+              </div>
+              <p className={styles.tip}>
+                Авторизируйтесь, чтобы иметь доступ <br /> к аккаунту и
+                использовать корзину
+              </p>
             </div>
-            <p className={styles.tip}>
-              Авторизируйтесь, чтобы иметь доступ <br /> к аккаунту и
-              использовать корзину
-            </p>
-          </div>
 
-          {/* 
+            {/* 
             // * Login Form
           */}
-          <form
-            className={`${styles.form} ${styles.loginForm} ${
-              isLoginForm && styles.active
-            }`}
-            autoComplete='off'
-            onSubmit={handleSubmit}>
-            <TextField
-              className={styles.login}
-              onChange={handleLoginChange}
-              label='Логин'
-              variant='outlined'
-              required
-              fullWidth
-              margin='normal'
-              sx={{
-                '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
-                  {
-                    borderColor: '#ff683a',
+            <form
+              className={`${styles.form} ${styles.loginForm} ${
+                isLoginForm && styles.active
+              }`}
+              autoComplete='off'
+              onSubmit={handleSubmit}>
+              <TextField
+                className={styles.login}
+                onChange={handleLoginChange}
+                label='Логин'
+                variant='outlined'
+                required
+                fullWidth
+                margin='normal'
+                sx={{
+                  '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
+                    {
+                      borderColor: '#ff683a',
+                    },
+                  '& .MuiOutlinedInput-root': {
+                    borderRadius: '12px',
                   },
-                '& .MuiOutlinedInput-root': {
-                  borderRadius: '12px',
-                },
-              }}
-            />
-            <TextField
-              className={styles.password}
-              onChange={handlePasswordChange}
-              label='Пароль'
-              variant='outlined'
-              type='password'
-              required
-              fullWidth
-              margin='normal'
-              sx={{
-                '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
-                  {
-                    borderColor: '#ff683a',
+                }}
+              />
+              <TextField
+                className={styles.password}
+                onChange={handlePasswordChange}
+                label='Пароль'
+                variant='outlined'
+                type='password'
+                required
+                fullWidth
+                margin='normal'
+                sx={{
+                  '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
+                    {
+                      borderColor: '#ff683a',
+                    },
+                  '& .MuiOutlinedInput-root': {
+                    borderRadius: '12px',
                   },
-                '& .MuiOutlinedInput-root': {
-                  borderRadius: '12px',
-                },
-              }}
-            />
-            <Button
-              className={styles.submit}
-              type='submit'
-              variant='contained'
-              sx={{
-                background: '#ff683a',
-                marginTop: 5,
-                '&.MuiButton-root.MuiButton-contained': {
-                  width: '100%',
-                  borderRadius: '30px',
-                  padding: '16px',
-                  textTransform: 'capitalize',
-                  fontSize: '16px',
-                  lineHeight: '145%',
-                },
-              }}>
-              Войти
-            </Button>
-          </form>
+                }}
+              />
+              <Button
+                className={styles.submit}
+                type='submit'
+                variant='contained'
+                sx={{
+                  background: '#ff683a',
+                  marginTop: 5,
+                  '&.MuiButton-root.MuiButton-contained': {
+                    width: '100%',
+                    borderRadius: '30px',
+                    padding: '16px',
+                    textTransform: 'capitalize',
+                    fontSize: '16px',
+                    lineHeight: '145%',
+                  },
+                }}>
+                Войти
+              </Button>
+            </form>
 
-          {/* 
+            {/* 
             // * Register Form
           */}
-          <form
-            className={`${styles.form} ${styles.registerForm} ${
-              !isLoginForm && styles.active
-            }`}
-            autoComplete='off'
-            onSubmit={handleSubmit}>
-            <TextField
-              className={styles.login}
-              onChange={handleLoginChange}
-              label='Логин'
-              variant='outlined'
-              required
-              fullWidth
-              margin='normal'
-              sx={{
-                '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
-                  {
-                    borderColor: '#ff683a',
+            <form
+              className={`${styles.form} ${styles.registerForm} ${
+                !isLoginForm && styles.active
+              }`}
+              autoComplete='off'
+              onSubmit={handleSubmit}>
+              <TextField
+                className={styles.login}
+                onChange={handleLoginChange}
+                label='Логин'
+                variant='outlined'
+                required
+                fullWidth
+                margin='normal'
+                sx={{
+                  '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
+                    {
+                      borderColor: '#ff683a',
+                    },
+                  '& .MuiOutlinedInput-root': {
+                    borderRadius: '12px',
                   },
-                '& .MuiOutlinedInput-root': {
-                  borderRadius: '12px',
-                },
-              }}
-            />
-            <TextField
-              className={styles.password}
-              onChange={handlePasswordChange}
-              label='Пароль'
-              variant='outlined'
-              type='password'
-              required
-              fullWidth
-              margin='normal'
-              sx={{
-                '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
-                  {
-                    borderColor: '#ff683a',
+                }}
+              />
+              <TextField
+                className={styles.password}
+                onChange={handlePasswordChange}
+                label='Пароль'
+                variant='outlined'
+                type='password'
+                required
+                fullWidth
+                margin='normal'
+                sx={{
+                  '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
+                    {
+                      borderColor: '#ff683a',
+                    },
+                  '& .MuiOutlinedInput-root': {
+                    borderRadius: '12px',
                   },
-                '& .MuiOutlinedInput-root': {
-                  borderRadius: '12px',
-                },
-              }}
-            />
-            <TextField
-              className={styles.password}
-              onChange={handlePasswordChange}
-              label='Повторите пароль'
-              variant='outlined'
-              type='password'
-              required
-              fullWidth
-              margin='normal'
-              sx={{
-                '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
-                  {
-                    borderColor: '#ff683a',
+                }}
+              />
+              <TextField
+                className={styles.password}
+                onChange={handlePasswordChange}
+                label='Повторите пароль'
+                variant='outlined'
+                type='password'
+                required
+                fullWidth
+                margin='normal'
+                sx={{
+                  '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
+                    {
+                      borderColor: '#ff683a',
+                    },
+                  '& .MuiOutlinedInput-root': {
+                    borderRadius: '12px',
                   },
-                '& .MuiOutlinedInput-root': {
-                  borderRadius: '12px',
-                },
-              }}
-            />
-            <Button
-              className={styles.submit}
-              type='submit'
-              variant='contained'
-              sx={{
-                background: '#ff683a',
-                marginTop: 5,
-                '&.MuiButton-root.MuiButton-contained': {
-                  width: '100%',
-                  borderRadius: '30px',
-                  padding: '16px',
-                  textTransform: 'capitalize',
-                  fontSize: '16px',
-                  lineHeight: '145%',
-                },
-              }}>
-              Зарегистрироваться
-            </Button>
-          </form>
+                }}
+              />
+              <Button
+                className={styles.submit}
+                type='submit'
+                variant='contained'
+                sx={{
+                  background: '#ff683a',
+                  marginTop: 5,
+                  '&.MuiButton-root.MuiButton-contained': {
+                    width: '100%',
+                    borderRadius: '30px',
+                    padding: '16px',
+                    textTransform: 'capitalize',
+                    fontSize: '16px',
+                    lineHeight: '145%',
+                  },
+                }}>
+                Зарегистрироваться
+              </Button>
+            </form>
+          </div>
         </div>
-      </div>
-      <Snackbar
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        open={error}
-        autoHideDuration={3000}
-        onClose={handleClose}>
-        <Alert severity='error' onClose={handleClose} sx={{ width: '100%' }}>
-          <AlertTitle>Ошибка</AlertTitle>
-          Проверьте — <strong>логин или пароль!</strong>
-        </Alert>
-      </Snackbar>
-    </section>
+        <Snackbar
+          anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+          open={error}
+          autoHideDuration={3000}
+          onClose={handleClose}>
+          <Alert severity='error' onClose={handleClose} sx={{ width: '100%' }}>
+            <AlertTitle>Ошибка</AlertTitle>
+            Проверьте — <strong>логин или пароль!</strong>
+          </Alert>
+        </Snackbar>
+      </section>
+    </>
   );
 }
