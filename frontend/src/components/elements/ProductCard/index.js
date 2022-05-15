@@ -23,7 +23,7 @@ export default function ProductCard({ productCard }) {
       </div>
       <div className={styles.contentContainer}>
         <h3 onClick={() => handleProductModal()}>{productCard.name}</h3>
-        <p>178 г</p>
+        <p>{productCard.weight} кг</p>
         <div className={styles.priceContainer}>
           <h4>{productCard.price} ₽</h4>
           <button className={styles.cartButton}>В корзину</button>
