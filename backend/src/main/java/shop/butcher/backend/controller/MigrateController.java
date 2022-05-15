@@ -39,7 +39,7 @@ public class MigrateController {
     PasswordEncoder encoder;
 
 
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<?> initDataBase() {
         Role roleAdmin = new Role(RoleEnum.ROLE_ADMIN);
         Role roleUser = new Role(RoleEnum.ROLE_USER);

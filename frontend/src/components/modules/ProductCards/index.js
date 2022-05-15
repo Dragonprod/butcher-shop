@@ -8,7 +8,7 @@ export default function ProductCards() {
 
   useEffect(() => {
     const getCategoriesData = async () => {
-      const categoriesData = await API.get(`/categories/`);
+      const categoriesData = await API.get(`/categories`);
       setCategories(categoriesData.data);
     };
     getCategoriesData();
@@ -16,12 +16,12 @@ export default function ProductCards() {
 
   return (
     <div className={styles.test}>
-      {categories.map((category, id) => (
-        <div key={id} className={styles.categoryContainer}>
+      {categories.map(category => (
+        <div key={category.id} className={styles.categoryContainer}>
           <h2>{category.name}</h2>
           <div className={styles.productsGrid}>
-            {category.products.map((product, pid) => (
-              <ProductCard key={pid} id={pid} productCard={product} />
+            {category.products.map(product => (
+              <ProductCard key={product.id} productCard={product} />
             ))}
           </div>
         </div>

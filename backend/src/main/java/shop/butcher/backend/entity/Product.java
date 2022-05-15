@@ -4,7 +4,6 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import java.io.Serializable;
 
 @Entity
 @Table(name = "products")
@@ -56,6 +55,14 @@ public class Product {
         this.storageConditions = storageConditions;
         this.composition = composition;
         this.price = price;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Category getCategory() {

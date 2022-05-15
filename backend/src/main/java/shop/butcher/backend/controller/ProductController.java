@@ -22,12 +22,12 @@ public class ProductController {
     @Autowired
     CategoryRepository categoryRepository;
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<Product> getProducts() {
         return productRepository.findAll();
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<?> createProduct(@Valid @RequestBody ProductReequest productRequest) {
         if (productRepository.existsByName(productRequest.getName())) {
             return ResponseEntity

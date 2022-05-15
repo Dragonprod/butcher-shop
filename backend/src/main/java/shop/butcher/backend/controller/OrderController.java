@@ -29,12 +29,12 @@ public class OrderController {
     @Autowired
     ProductRepository productRepository;
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<Order> getOrders() {
         return orderRepository.findAll();
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<?> createOrder(@Valid @RequestBody OrderRequest orderRequest) {
         User user = userRepository.findById(orderRequest.getUserId())
                 .orElseThrow(() -> new RuntimeException("Error: User is not found."));

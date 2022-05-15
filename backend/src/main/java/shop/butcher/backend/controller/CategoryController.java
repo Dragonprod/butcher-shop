@@ -8,9 +8,6 @@ import shop.butcher.backend.dto.request.CategoryRequest;
 import shop.butcher.backend.dto.response.MessageResponse;
 import shop.butcher.backend.entity.Category;
 import shop.butcher.backend.entity.Product;
-import shop.butcher.backend.entity.Role;
-import shop.butcher.backend.entity.User;
-import shop.butcher.backend.enums.RoleEnum;
 import shop.butcher.backend.repository.CategoryRepository;
 import shop.butcher.backend.repository.ProductRepository;
 
@@ -28,12 +25,12 @@ public class CategoryController {
     @Autowired
     ProductRepository productRepository;
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<Category> getCategories() {
-        return categoryRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
+        return categoryRepository.findAll();
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<?> createCategory(@Valid @RequestBody CategoryRequest categoryRequest) {
         if (categoryRepository.existsByName(categoryRequest.getName())) {
             return ResponseEntity

@@ -1,14 +1,24 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styles from './CartItem.module.scss';
 import CloseIcon from '@mui/icons-material/Close';
 import { IconButton } from '@mui/material';
 import Counter from '../Counter';
+import { UIContext } from '../../../context/UIContext';
 
 export default function CartItem({ cartItem, handleDelete }) {
   const [price, setPrice] = useState(cartItem.price);
+  const {setTotalPrice} = useContext(UIContext);
 
-  const handlePriceDecrease = () => setPrice(prevAmount => prevAmount - cartItem.price);
-  const handlePriceIncrease = () => setPrice(prevAmount => prevAmount + cartItem.price);
+  const handlePriceDecrease = () => {
+    setPrice(prevAmount => prevAmount - cartItem.price);
+    setTotalPrice(prevAmount => prevAmount + cartItem.price);
+  }
+
+  const handlePriceIncrease = () => {
+    setPrice(prevAmount => prevAmount + cartItem.price);
+    setTotalPrice(prevAmount => prevAmount + cartItem.price);
+  }
+
 
   return (
     <li className={styles.itemContainer}>
