@@ -34,7 +34,6 @@ function App() {
             <Route exact path='/' element={<CatalogPage />} />
             <Route exact path='/login' element={<AuthPage />} />
             <Route exact path='/logout' element={<LogoutPage />} />
-            {/* <Route exact path='/cart' element={<CartPage />} /> */}
           </Routes>
         </BrowserRouter>
       </UIContextProvider>
