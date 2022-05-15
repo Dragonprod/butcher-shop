@@ -11,6 +11,7 @@ import API from '../../../api';
 export default function AuthPage() {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordRepeat, setPasswordRepeat] = useState('');
   const [error, setError] = useState(false);
   const { setisAuth, setisAdmin, setUser, setapiToken } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -29,6 +30,10 @@ export default function AuthPage() {
     setPassword(e.target.value);
   };
 
+  const handleRepeatPasswordChange = e => {
+    setPasswordRepeat(e.target.value);
+  };
+
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -39,52 +44,82 @@ export default function AuthPage() {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    const authData = {
-      username: login,
-      password: password,
-    };
+    if (isLoginForm) {
+      const authData = {
+        username: login,
+        password: password,
+      };
 
-    try {
-      const authReponse = await API.post(`/auth/login`, authData);
-      console.log(authReponse)
-      const user = {
-        id: authReponse.data.id,
-        email: authReponse.data.email
+      try {
+        const authResponse = await API.post(`/auth/login`, authData);
+        const user = {
+          id: authResponse.data.id,
+          email: authResponse.data.email
+        }
+        authResponse.data.roles.forEach(role => {
+          switch (role) {
+            case "ROLE_ADMIN":
+              setisAdmin(true);
+              localStorage.setItem('isAdmin', 'true')
+              break;
+            case "ROLE_USER":
+              setisAdmin(false);
+              localStorage.setItem('isAdmin', 'false')
+              break;
+            default:
+              setisAdmin(false);
+              localStorage.setItem('isAdmin', 'false')
+              break;
+          }
+        });
+        setapiToken(authResponse.data.accessToken)
+        setisAuth(true)
+        setUser(user)
+        localStorage.setItem('isAuth', 'true')
+        localStorage.setItem('api_token', authResponse.data.accessToken)
+        localStorage.setItem('user', JSON.stringify(user))
+        navigate('/')
       }
-      authReponse.data.roles.forEach(role => {
-        switch (role) {
-          case "ROLE_ADMIN":
-            setisAdmin(true);
-            localStorage.setItem('isAdmin', 'true')
+      catch (err) {
+        switch (err.response.data.status) {
+          case 401:
+            setError(true);
+            console.log("Bad credentials")
             break;
-          case "ROLE_USER":
-            setisAdmin(false);
-            localStorage.setItem('isAdmin', 'false')
-            break;
+
           default:
-            setisAdmin(false);
-            localStorage.setItem('isAdmin', 'false')
+            setError(true);
             break;
         }
-      });
-      setapiToken(authReponse.data.accessToken)
-      setisAuth(true)
-      setUser(user)
-      localStorage.setItem('isAuth', 'true')
-      localStorage.setItem('api_token', authReponse.data.accessToken)
-      localStorage.setItem('user', JSON.stringify(user))
-      navigate('/')
+      }
     }
-    catch (err) {
-      switch (err.response.data.status) {
-        case 401:
-          setError(true);
-          console.log("Bad credentials")
-          break;
+    else {
+      if (password === passwordRepeat) {
+        const registerData = {
+          username: login,
+          email: `${login}@butcher.shop`,
+          role: ["user"],
+          password: password,
+        }
+        try {
+          await API.post(`/auth/register`, registerData);
+          setIsLoginForm(true);
+        }
+        catch (err) {
+          switch (err.response.data.status) {
+            case 401:
+              setError(true);
+              console.log("Bad credentials")
+              break;
 
-        default:
-          setError(true);
-          break;
+            default:
+              setError(true);
+              break;
+          }
+        }
+      }
+      else {
+        setError(true);
       }
     }
   };
@@ -116,10 +151,6 @@ export default function AuthPage() {
                 использовать корзину
               </p>
             </div>
-
-            {/* 
-            // * Login Form
-          */}
             <form
               className={`${styles.form} ${styles.loginForm} ${isLoginForm && styles.active
                 }`}
@@ -182,9 +213,6 @@ export default function AuthPage() {
               </Button>
             </form>
 
-            {/* 
-            // * Register Form
-          */}
             <form
               className={`${styles.form} ${styles.registerForm} ${!isLoginForm && styles.active
                 }`}
@@ -229,7 +257,7 @@ export default function AuthPage() {
               />
               <TextField
                 className={styles.password}
-                onChange={handlePasswordChange}
+                onChange={handleRepeatPasswordChange}
                 label='Повторите пароль'
                 variant='outlined'
                 type='password'
