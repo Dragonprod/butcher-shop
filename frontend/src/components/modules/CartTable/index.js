@@ -27,7 +27,7 @@ export default function CartTable() {
               <CartItem
                 key={cartItem.id}
                 cartItem={cartItem}
-                onClick={() => handleDelete(cartItem.id)}
+                handleDelete={() => handleDelete(cartItem.id)}
               />
             ))}
           </ul>
