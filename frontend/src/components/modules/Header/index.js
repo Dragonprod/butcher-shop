@@ -21,7 +21,7 @@ export default function Header({ page = '' }) {
               <Link to='/cart'>Корзина</Link>
               {isAuth ? (
                 <>
-                  <Link to='/profile'>
+                  <Link to='/profile' className={styles.avatarButton}>
                     <Avatar>H</Avatar>
                   </Link>
                   <Link to='/logout' className={styles.loginButton}>

@@ -8,6 +8,7 @@ import ProtectedRoute from './components/elements/ProtectedRoute';
 import LogoutPage from './pages/default/auth/LogoutPage';
 import UIContextProvider from './context/UIContext';
 import ProfilePage from './pages/user/profile/ProfilePage';
+import AdminPage from './pages/admin/AdminPage';
 
 function App() {
   const [isAuth, setisAuth] = useState(false);
@@ -35,6 +36,8 @@ function App() {
       <UIContextProvider>
         <BrowserRouter>
           <Routes>
+            <Route exact path='/' element={<CatalogPage />} />
+            <Route exact path='/login' element={<AuthPage />} />
             <Route
               exact
               path='/cart'
@@ -44,10 +47,33 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route exact path='/' element={<CatalogPage />} />
-            <Route exact path='/login' element={<AuthPage />} />
-            <Route exact path='/logout' element={<LogoutPage />} />
-            <Route exact path='/profile' element={<ProfilePage />} />
+            <Route
+              exact
+              path='/logout'
+              element={
+                <ProtectedRoute>
+                  <LogoutPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              exact
+              path='/profile'
+              element={
+                <ProtectedRoute>
+                  <ProfilePage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              exact
+              path='/admin'
+              element={
+                <ProtectedRoute>
+                  <AdminPage />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </BrowserRouter>
       </UIContextProvider>
