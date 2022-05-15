@@ -5,11 +5,16 @@ import { UIContext } from '../../../context/UIContext';
 import { useContext } from 'react';
 
 export default function ProductModal() {
-  const { selectedProduct, cartProducts, setCartProducts } =
-    useContext(UIContext);
+  const {
+    selectedProduct,
+    cartProducts,
+    setCartProducts,
+    setIsProductAddedToCart,
+  } = useContext(UIContext);
 
   const handleAddToCart = () => {
     setCartProducts([...cartProducts, selectedProduct]);
+    setIsProductAddedToCart(true);
   };
 
   // TODO: Dynamic Images
