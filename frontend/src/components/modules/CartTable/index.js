@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import CartItem from '../../elements/CartItem';
 import styles from './CartTable.module.scss';
 import { UIContext } from '../../../context/UIContext';
 
 export default function CartTable() {
   const { cartProducts, setCartProducts, totalPrice, setTotalPrice, setModalActive } = useContext(UIContext);
-
+  
   const handleDelete = id => {
     setCartProducts(cartProducts.filter(item => item.id !== id));
     setTotalPrice(prevAmount => prevAmount - cartProducts.filter(item => item.id === id)[0].price)
@@ -42,7 +42,7 @@ export default function CartTable() {
           </div>
           <div className={styles.buyButtonContainer}>
             <button className={styles.buyButton} onClick={handleAlertModal}>
-              Купить
+              Оформить заказ
             </button>
           </div>
         </>

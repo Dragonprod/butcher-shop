@@ -9,6 +9,7 @@ export default function ProductCard({ productCard }) {
     cartProducts,
     setCartProducts,
     setIsProductAddedToCart,
+    setTotalPrice,
   } = useContext(UIContext);
 
   const handleProductModal = () => {
@@ -20,6 +21,7 @@ export default function ProductCard({ productCard }) {
     if(cartProducts.indexOf(productCard) === -1) {
       setCartProducts([...cartProducts, productCard])
       setIsProductAddedToCart(true);
+      setTotalPrice(prevAmount => prevAmount + productCard.price)
     }
   };
 

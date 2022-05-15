@@ -9,12 +9,14 @@ export default function ProductModal() {
     cartProducts,
     setCartProducts,
     setIsProductAddedToCart,
+    setTotalPrice,
   } = useContext(UIContext);
 
   const handleAddToCart = () => {
     if(cartProducts.indexOf(selectedProduct) === -1) {
       setCartProducts([...cartProducts, selectedProduct])
       setIsProductAddedToCart(true);
+      setTotalPrice(prevAmount => prevAmount + selectedProduct.price)
     }
   };
 
