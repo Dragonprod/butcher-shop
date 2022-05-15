@@ -28,11 +28,11 @@ export default function OrdersTableBlock() {
       <h2 className={styles.title}>Заказы</h2>
       <ul className={styles.table}>
         <div className={styles.tableHeader}>
-          <h3>Фото</h3>
-          <h3>Описание</h3>
-          <h3>Цена</h3>
-          <h3>Количество</h3>
+          <h3>№</h3>
+          <h3>Список товаров</h3>
+          <h3>Дата создания</h3>
           <h3>Сумма</h3>
+          <h3>Статус</h3>
         </div>
         {cartProducts.map(cartItem => (
           <div></div>
