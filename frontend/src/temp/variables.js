@@ -135,38 +135,3 @@ export const defaultCategories = [
     ],
   },
 ];
-
-export const defaultCartItems = [
-  {
-    id: 0,
-    name: 'Бутер',
-    description: 'Lorem ipsum',
-    weight: 0.5,
-    photoPath: '../../../assets/images/1.png',
-    price: 100,
-  },
-  {
-    id: 1,
-    name: 'Бургер',
-    description: 'Lorem ipsum',
-    weight: 0.5,
-    photoPath: '../../../assets/images/1.png',
-    price: 120,
-  },
-  {
-    id: 2,
-    name: 'Стейк говядины',
-    description: 'Lorem ipsum',
-    weight: 0.5,
-    photoPath: '../../../assets/images/1.png',
-    price: 130,
-  },
-  {
-    id: 3,
-    name: 'Бараньи рёбра',
-    description: 'Lorem ipsum',
-    weight: 0.5,
-    photoPath: '../../../assets/images/1.png',
-    price: 140,
-  },
-];

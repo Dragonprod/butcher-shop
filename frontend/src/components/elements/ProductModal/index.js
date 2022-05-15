@@ -5,7 +5,12 @@ import { UIContext } from '../../../context/UIContext';
 import { useContext } from 'react';
 
 export default function ProductModal() {
-  const { selectedProduct } = useContext(UIContext);
+  const { selectedProduct, cartProducts, setCartProducts } =
+    useContext(UIContext);
+
+  const handleAddToCart = () => {
+    setCartProducts([...cartProducts, selectedProduct]);
+  };
 
   // TODO: Dynamic Images
 
@@ -43,7 +48,11 @@ export default function ProductModal() {
           </div>
           <div className={`${styles.infoContainer} ${styles.priceContainer}`}>
             <h4>{selectedProduct.price} ₽</h4>
-            <button className={styles.cartButton}>В корзину</button>
+            <button
+              className={styles.cartButton}
+              onClick={() => handleAddToCart()}>
+              В корзину
+            </button>
           </div>
         </div>
       </div>

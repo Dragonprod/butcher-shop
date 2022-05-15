@@ -4,11 +4,16 @@ import img1 from '../../../assets/images/1.png';
 import { UIContext } from '../../../context/UIContext';
 
 export default function ProductCard({ productCard }) {
-  const { setModalActive, setSelectedProduct } = useContext(UIContext);
+  const { setModalActive, setSelectedProduct, cartProducts, setCartProducts } =
+    useContext(UIContext);
 
   const handleProductModal = () => {
     setModalActive(true);
     setSelectedProduct(productCard);
+  };
+
+  const handleAddToCart = () => {
+    setCartProducts([...cartProducts, productCard]);
   };
 
   // TODO: Dynamic Images
@@ -26,7 +31,11 @@ export default function ProductCard({ productCard }) {
         <p>{productCard.weight} кг</p>
         <div className={styles.priceContainer}>
           <h4>{productCard.price} ₽</h4>
-          <button className={styles.cartButton}>В корзину</button>
+          <button
+            className={styles.cartButton}
+            onClick={() => handleAddToCart()}>
+            В корзину
+          </button>
         </div>
       </div>
     </div>

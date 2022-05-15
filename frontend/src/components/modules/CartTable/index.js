@@ -1,23 +1,23 @@
 import { Link } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import CartItem from '../../elements/CartItem';
 import styles from './CartTable.module.scss';
-import { defaultCartItems } from '../../../temp/variables';
+import { UIContext } from '../../../context/UIContext';
 
 export default function CartTable() {
-  const [cartItems, setCartItems] = useState(defaultCartItems);
+  const { cartProducts, setCartProducts } = useContext(UIContext);
 
   useEffect(() => {
     // TODO: Fetch data
   }, []);
 
   const handleDelete = id => {
-    setCartItems(cartItems.filter(item => item.id !== id));
+    setCartProducts(cartProducts.filter(item => item.id !== id));
   };
 
   return (
     <>
-      {cartItems.length > 0 ? (
+      {cartProducts.length > 0 ? (
         <ul className={styles.table}>
           <div className={styles.tableHeader}>
             <h3>Фото</h3>
@@ -26,7 +26,7 @@ export default function CartTable() {
             <h3>Количество</h3>
             <h3>Сумма</h3>
           </div>
-          {cartItems.map(cartItem => (
+          {cartProducts.map(cartItem => (
             <CartItem
               key={cartItem.id}
               cartItem={cartItem}
