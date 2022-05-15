@@ -18,6 +18,7 @@ export default function ProductModal() {
         <div className={styles.contentContainer}>
           <div
             className={`${styles.infoContainer} ${styles.descriptionContainer}`}>
+            <h2>{selectedProduct.name}</h2>
             <h3>Описание продукта:</h3>
             <p>
               мини наггетсы – это не только куриное филе в тонкой хрустящей

@@ -14,6 +14,13 @@
     }
   }
 
+  .descriptionContainer {
+    h2 {
+      color: var(--accent-clr-1);
+      margin: 0 0 24px;
+    }
+  }
+
   .contentContainer {
     padding: 0 24px;
     max-height: 405px;
