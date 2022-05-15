@@ -1,0 +1,23 @@
+.mainGrid {
+  text-align: left;
+
+  .buttonsContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 24px 0 0;
+  }
+}
+
+.accentButton {
+  padding: 12px 24px;
+  color: var(--bg-clr-1);
+  background: var(--accent-clr-1);
+  border-radius: var(--border-radius);
+  transition: background 0.3s;
+  line-height: 1.5;
+
+  &:hover {
+    background: var(--accent-clr-2);
+  }
+}
