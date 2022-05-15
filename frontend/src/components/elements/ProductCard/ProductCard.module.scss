@@ -5,9 +5,9 @@
   overflow: hidden;
   transition: transform 0.3s;
 
-  &:hover {
-    transform: scale(1.03);
-  }
+  // &:hover {
+  //   transform: scale(1.03);
+  // }
 
   .photoContainer {
     display: grid;
@@ -15,6 +15,7 @@
     padding: 8px;
     // background: var(--bg-clr-1);
     background: var(--bg-clr-2);
+    cursor: pointer;
 
     img {
       width: 90%;
@@ -27,6 +28,7 @@
     h3 {
       font-weight: 700;
       font-size: 24px;
+      cursor: pointer;
     }
 
     h4 {

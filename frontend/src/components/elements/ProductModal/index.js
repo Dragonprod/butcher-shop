@@ -3,6 +3,7 @@ import styles from './ProductModal.module.scss';
 import img1 from '../../../assets/images/1.png';
 
 export default function ProductModal() {
+  // TODO: Dynamic Images
   return (
     <Modal>
       <div className={styles.mainGrid}>

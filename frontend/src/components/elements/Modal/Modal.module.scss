@@ -29,8 +29,8 @@
   background: #fff;
   border-radius: 1rem;
   transform: translateY(-100px);
-  /* transition: transform 0.3s; */
-  transition: transform 0.3s cubic-bezier(0.43, 0.06, 0, 1.42);
+  transition: transform 0.3s;
+  // transition: transform 0.3s cubic-bezier(0.43, 0.06, 0, 1.42);
   text-align: center;
 }
 .modalContentActive {
