@@ -7,6 +7,7 @@ import CartPage from './pages/user/cart/CartPage';
 import ProtectedRoute from './components/elements/ProtectedRoute';
 import LogoutPage from './pages/default/auth/LogoutPage';
 import UIContextProvider from './context/UIContext';
+import ProfilePage from './pages/user/profile/ProfilePage';
 
 function App() {
   const [isAuth, setisAuth] = useState(false);
@@ -34,6 +35,7 @@ function App() {
             <Route exact path='/' element={<CatalogPage />} />
             <Route exact path='/login' element={<AuthPage />} />
             <Route exact path='/logout' element={<LogoutPage />} />
+            <Route exact path='/profile' element={<ProfilePage />} />
           </Routes>
         </BrowserRouter>
       </UIContextProvider>

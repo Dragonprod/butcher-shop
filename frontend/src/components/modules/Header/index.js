@@ -4,6 +4,7 @@ import { AuthContext } from '../../../context';
 import Logo from '../../elements/Logo';
 import { Link } from 'react-router-dom';
 import { AUTH_PAGE } from '../../../constants';
+import { Avatar } from '@mui/material';
 
 export default function Header({ page = '' }) {
   const [isAdmin, setisAdmin] = useState(false);
@@ -20,9 +21,14 @@ export default function Header({ page = '' }) {
             <>
               <Link to='/cart'>Корзина</Link>
               {isAuth ? (
-                <Link to='/logout' className={styles.loginButton}>
-                  Выйти
-                </Link>
+                <>
+                  <Link to='/profile'>
+                    <Avatar>H</Avatar>
+                  </Link>
+                  <Link to='/logout' className={styles.loginButton}>
+                    Выйти
+                  </Link>
+                </>
               ) : (
                 <Link to='/login' className={styles.loginButton}>
                   Войти

@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../../../components/modules/Header';
-import styles from './CatalogPage.module.scss';
+import styles from './ProfilePage.module.scss';
 
 export default function ProfilePage() {
   return (
