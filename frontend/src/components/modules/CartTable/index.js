@@ -39,6 +39,9 @@ export default function CartTable() {
             <h3>Всего к оплате</h3>
             <h3>{999} ₽</h3>
           </div>
+          <div className={styles.buyButtonContainer}>
+            <button className={styles.buyButton}>Купить</button>
+          </div>
         </>
       ) : (
         <>
