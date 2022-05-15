@@ -1,15 +1,14 @@
 import { Avatar, Button, TextField } from '@mui/material';
-import React, { useContext, useState } from 'react';
-import { AuthContext } from '../../../context';
+import React, { useEffect, useState } from 'react';
 import styles from './UserInfoBlock.module.scss';
 
 export default function UserInfoBlock() {
-  const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState(false);
-  const { setisAuth, setisAdmin, setUser, setapiToken } =
-    useContext(AuthContext);
-  const [isLoginForm, setIsLoginForm] = useState(true);
+  const [login, setLogin] = useState('user@mail.ru');
+  const [password, setPassword] = useState('123456');
+
+  useEffect(() => {
+    // TODO: Fetch Data
+  }, []);
 
   const handleLoginChange = e => {
     setLogin(e.target.value);
@@ -37,6 +36,7 @@ export default function UserInfoBlock() {
             onSubmit={handleSubmit}>
             <TextField
               className={styles.login}
+              defaultValue={login}
               onChange={handleLoginChange}
               label='Логин'
               variant='outlined'
@@ -55,6 +55,7 @@ export default function UserInfoBlock() {
             />
             <TextField
               className={styles.password}
+              defaultValue={password}
               onChange={handlePasswordChange}
               label='Пароль'
               variant='outlined'
