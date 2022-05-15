@@ -1,5 +1,42 @@
+.title {
+  font-size: 28px;
+  margin: 0 0 16px;
+}
+
 .block {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr;
   width: var(--max-width);
   background: var(--bg-clr-1);
   border-radius: var(--border-radius);
+
+  .avatarContainer,
+  .infoContainer {
+    display: grid;
+    padding: 32px;
+  }
+
+  .avatarContainer {
+    place-content: center;
+
+    img {
+      max-width: 95%;
+    }
+  }
+}
+
+.login,
+.password {
+  label[data-shrink='true'] {
+    color: var(--accent-clr-1) !important;
+  }
+}
+
+.submit:hover {
+  background-color: var(--accent-clr-2) !important;
+}
+
+.form {
+  max-width: 394px;
+  transition: opacity 0.3s;
 }
