@@ -10,6 +10,8 @@ export default function ProductCard({ productCard }) {
     setCartProducts,
     setIsProductAddedToCart,
     setTotalPrice,
+    cartProductsWithAmount,
+    setCartProductsWithAmount
   } = useContext(UIContext);
 
   const handleProductModal = () => {
@@ -18,10 +20,13 @@ export default function ProductCard({ productCard }) {
   };
 
   const handleAddToCart = () => {
-    if(cartProducts.indexOf(productCard) === -1) {
+    if (cartProducts.indexOf(productCard) === -1) {
       setCartProducts([...cartProducts, productCard])
       setIsProductAddedToCart(true);
       setTotalPrice(prevAmount => prevAmount + productCard.price)
+      if (cartProductsWithAmount[productCard.id] === undefined) {
+        setCartProductsWithAmount(prevState => ({ ...prevState, [productCard.id.toString()]: 1 }))
+      }
     }
   };
 

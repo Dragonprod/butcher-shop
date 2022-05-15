@@ -7,18 +7,20 @@ import { UIContext } from '../../../context/UIContext';
 
 export default function CartItem({ cartItem, handleDelete }) {
   const [price, setPrice] = useState(cartItem.price);
-  const { setTotalPrice } = useContext(UIContext);
+  const { setTotalPrice, setCartProductsWithAmount } = useContext(UIContext);
 
   const handlePriceDecrease = () => {
     setPrice(prevAmount => prevAmount - cartItem.price);
     setTotalPrice(prevAmount => prevAmount - cartItem.price);
+    setCartProductsWithAmount(prevState => ({ ...prevState, [cartItem.id.toString()]: prevState[cartItem.id.toString()] - 1}))
   }
 
   const handlePriceIncrease = () => {
     setPrice(prevAmount => prevAmount + cartItem.price);
     setTotalPrice(prevAmount => prevAmount + cartItem.price);
+    setCartProductsWithAmount(prevState => ({ ...prevState, [cartItem.id.toString()]: prevState[cartItem.id.toString()] + 1}))
   }
-  
+
   return (
     <li className={styles.itemContainer}>
       <div className={styles.photoContainer}>

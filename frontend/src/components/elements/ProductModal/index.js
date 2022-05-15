@@ -10,13 +10,18 @@ export default function ProductModal() {
     setCartProducts,
     setIsProductAddedToCart,
     setTotalPrice,
+    cartProductsWithAmount,
+    setCartProductsWithAmount,
   } = useContext(UIContext);
 
   const handleAddToCart = () => {
-    if(cartProducts.indexOf(selectedProduct) === -1) {
+    if (cartProducts.indexOf(selectedProduct) === -1) {
       setCartProducts([...cartProducts, selectedProduct])
       setIsProductAddedToCart(true);
       setTotalPrice(prevAmount => prevAmount + selectedProduct.price)
+      if (cartProductsWithAmount[selectedProduct.id] === undefined) {
+        setCartProductsWithAmount(prevState => ({ ...prevState, [selectedProduct.id.toString()]: 1 }))
+      }
     }
   };
 

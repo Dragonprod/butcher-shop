@@ -9,6 +9,7 @@ const UIContextProvider = ({ children }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [categories, setCategories] = useState([]);
   const [isProductAddedToCart, setIsProductAddedToCart] = useState(false);
+  const [cartProductsWithAmount, setCartProductsWithAmount] = useState({})
 
   return (
     <UIContext.Provider
@@ -25,6 +26,8 @@ const UIContextProvider = ({ children }) => {
         setCategories,
         isProductAddedToCart,
         setIsProductAddedToCart,
+        cartProductsWithAmount,
+        setCartProductsWithAmount
       }}>
       {children}
     </UIContext.Provider>

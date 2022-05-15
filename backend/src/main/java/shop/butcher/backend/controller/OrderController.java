@@ -43,9 +43,9 @@ public class OrderController {
         Map<Integer, Integer> productsIdsWithAmount = orderRequest.getProductsWithAmount();
         Map<Integer, Product> productsWithAmount = new HashMap<Integer, Product>();
         for (var entry : productsIdsWithAmount.entrySet()) {
-            Product product = productRepository.findById(entry.getValue().longValue())
+            Product product = productRepository.findById(entry.getKey().longValue())
                     .orElseThrow(() -> new RuntimeException("Error: Product is not found."));
-            productsWithAmount.put(entry.getKey(), product);
+            productsWithAmount.put(entry.getValue(), product);
         }
         order.setUser(user);
         order.setProductsWithAmount(productsWithAmount);
@@ -67,6 +67,12 @@ public class OrderController {
     public Order getOrder(@PathVariable("id") Long id) {
         return orderRepository.findById(id).orElseThrow(() -> new RuntimeException("Error: Order is not found."));
     }
+
+//    @GetMapping("/{userid}")
+//    public Order getUserOrders(@PathVariable("userid") Long userid) {
+//        User user = orderRepository.findById(userid).orElseThrow(() -> new RuntimeException("Error: User is not found."));
+//        return orderRepository.findById(id).orElseThrow(() -> new RuntimeException("Error: Order is not found."));
+//    }
 
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")

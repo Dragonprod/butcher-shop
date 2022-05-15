@@ -1,6 +1,7 @@
 package shop.butcher.backend.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -30,10 +31,10 @@ public class Order {
     private Boolean isComplete;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "order_product_mapping",
-            joinColumns = {@JoinColumn(name = "order_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "product_id", referencedColumnName = "id")})
-    @MapKey(name = "name")
+//    @JoinTable(name = "order_product_mapping",
+//            joinColumns = {@JoinColumn(name = "order_id", referencedColumnName = "id")},
+//            inverseJoinColumns = {@JoinColumn(name = "product_id", referencedColumnName = "id")})
+    @JsonManagedReference
     private Map<Integer, Product> productsWithAmount;
 
     public Order() {
@@ -43,6 +44,14 @@ public class Order {
         this.totalSum = totalSum;
         this.createdAt = createdAt;
         this.isComplete = false;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public User getUser() {
