@@ -12,15 +12,27 @@ import AdminPage from './pages/admin/AdminPage';
 
 function App() {
   const [isAuth, setisAuth] = useState(false);
+  const [isAdmin, setisAdmin] = useState(false);
+  const [user, setUser] = useState({});
+  const [apiToken, setapiToken] = useState('');
 
   useEffect(() => {
     if (localStorage.getItem('isAuth')) {
       setisAuth(true);
     }
+    if (localStorage.getItem('isAdmin')) {
+      setisAdmin(true);
+    }
+    if (localStorage.getItem('user')) {
+      setUser(localStorage.getItem('user'));
+    }
+    if (localStorage.getItem('api_token')) {
+      setapiToken(localStorage.getItem('api_token'));
+    }
   }, []);
 
   return (
-    <AuthContext.Provider value={{ isAuth, setisAuth }}>
+    <AuthContext.Provider value={{ isAuth, setisAuth, isAdmin, setisAdmin, user, setUser, apiToken, setapiToken }}>
       <UIContextProvider>
         <BrowserRouter>
           <Routes>

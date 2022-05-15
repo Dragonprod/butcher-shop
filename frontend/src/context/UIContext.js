@@ -6,6 +6,7 @@ const UIContextProvider = ({ children }) => {
   const [modalActive, setModalActive] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState({});
   const [cartProducts, setCartProducts] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
   const [categories, setCategories] = useState([]);
   const [isProductAddedToCart, setIsProductAddedToCart] = useState(false);
 
@@ -18,6 +19,8 @@ const UIContextProvider = ({ children }) => {
         setSelectedProduct,
         cartProducts,
         setCartProducts,
+        totalPrice,
+        setTotalPrice,
         categories,
         setCategories,
         isProductAddedToCart,

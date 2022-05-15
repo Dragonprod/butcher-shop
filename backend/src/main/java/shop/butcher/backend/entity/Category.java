@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,6 +21,7 @@ public class Category {
 
     @OneToMany(mappedBy = "category")
     @JsonManagedReference
+    @OrderBy("id ASC")
     private Set<Product> products = new HashSet<>();
 
     public Category() {
@@ -30,6 +30,14 @@ public class Category {
 
     public Category(String name) {
         this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

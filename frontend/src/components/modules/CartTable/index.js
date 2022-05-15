@@ -5,11 +5,11 @@ import styles from './CartTable.module.scss';
 import { UIContext } from '../../../context/UIContext';
 
 export default function CartTable() {
-  const { cartProducts, setCartProducts, setModalActive } =
-    useContext(UIContext);
+  const { cartProducts, setCartProducts, totalPrice, setTotalPrice, setModalActive } = useContext(UIContext);
 
   const handleDelete = id => {
     setCartProducts(cartProducts.filter(item => item.id !== id));
+    setTotalPrice(prevAmount => prevAmount - cartProducts.filter(item => item.id === id)[0].price)
   };
 
   const handleAlertModal = () => {
@@ -38,7 +38,7 @@ export default function CartTable() {
           </ul>
           <div className={styles.totalContainer}>
             <h3>Всего к оплате</h3>
-            <h3>{999} ₽</h3>
+            <h3>{totalPrice} ₽</h3>
           </div>
           <div className={styles.buyButtonContainer}>
             <button className={styles.buyButton} onClick={handleAlertModal}>

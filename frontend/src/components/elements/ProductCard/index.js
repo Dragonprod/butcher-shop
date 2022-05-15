@@ -2,9 +2,7 @@ import React, { useContext } from 'react';
 import styles from './ProductCard.module.scss';
 import { UIContext } from '../../../context/UIContext';
 
-export default function ProductCard({ id, productCard }) {
-  productCard.id = id;
-  
+export default function ProductCard({ productCard }) {
   const {
     setModalActive,
     setSelectedProduct,
@@ -19,8 +17,10 @@ export default function ProductCard({ id, productCard }) {
   };
 
   const handleAddToCart = () => {
-    setCartProducts([...cartProducts, productCard]);
-    setIsProductAddedToCart(true);
+    if(cartProducts.indexOf(productCard) === -1) {
+      setCartProducts([...cartProducts, productCard])
+      setIsProductAddedToCart(true);
+    }
   };
 
   return (

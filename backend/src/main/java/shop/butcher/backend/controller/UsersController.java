@@ -16,7 +16,7 @@ public class UsersController {
     @Autowired
     UserRepository userRepository;
 
-    @GetMapping("/")
+    @GetMapping("")
     @PreAuthorize("hasRole('ADMIN')")
     public List<User> getUsers() {
         return userRepository.findAll();

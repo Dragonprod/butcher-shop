@@ -1,5 +1,5 @@
 import styles from './Header.module.scss';
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { AuthContext } from '../../../context';
 import Logo from '../../elements/Logo';
 import { Link } from 'react-router-dom';
@@ -7,8 +7,7 @@ import { AUTH_PAGE } from '../../../constants';
 import { Avatar } from '@mui/material';
 
 export default function Header({ page = '' }) {
-  const [isAdmin, setisAdmin] = useState(false);
-  const { isAuth } = useContext(AuthContext);
+  const { isAuth, isAdmin } = useContext(AuthContext);
   return (
     <header className={styles.header}>
       <div className={styles.contentContainer}>

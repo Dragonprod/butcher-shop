@@ -12,8 +12,10 @@ export default function ProductModal() {
   } = useContext(UIContext);
 
   const handleAddToCart = () => {
-    setCartProducts([...cartProducts, selectedProduct]);
-    setIsProductAddedToCart(true);
+    if(cartProducts.indexOf(selectedProduct) === -1) {
+      setCartProducts([...cartProducts, selectedProduct])
+      setIsProductAddedToCart(true);
+    }
   };
 
   return (
