@@ -12,12 +12,11 @@ export default function ProductCards() {
       setCategories(categoriesData.data);
     };
     getCategoriesData();
-    
   }, []);
 
   return (
     <div className={styles.test}>
-      {categories.map((category, id) => ( 
+      {categories.map((category, id) => (
         <div key={id} className={styles.categoryContainer}>
           <h2>{category.name}</h2>
           <div className={styles.productsGrid}>
