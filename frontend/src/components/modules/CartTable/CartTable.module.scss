@@ -17,6 +17,20 @@
   }
 }
 
+.totalContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 40px;
+  padding: 12px 24px;
+  margin: 24px 0 0;
+
+  h3 {
+    font-size: 24px;
+  }
+  h3:last-child {
+    grid-column: 5/6;
+  }
+}
+
 .emptyCartTitle {
   text-align: center;
   color: var(--text-clr-2);
