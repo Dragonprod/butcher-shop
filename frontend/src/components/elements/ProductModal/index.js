@@ -10,7 +10,8 @@ export default function ProductModal() {
           <img src={img1} alt='nice' />
         </div>
         <div className={styles.contentContainer}>
-          <div>
+          <div
+            className={`${styles.infoContainer} ${styles.descriptionContainer}`}>
             <h3>Описание продукта:</h3>
             <p>
               мини наггетсы – это не только куриное филе в тонкой хрустящей
@@ -18,7 +19,8 @@ export default function ProductModal() {
               обязательно понравятся детям.
             </p>
           </div>
-          <div>
+          <div
+            className={`${styles.infoContainer} ${styles.characteristicContainer}`}>
             <div>
               <h3>Вес продукта:</h3>
               <p>0,250 кг</p>
@@ -32,7 +34,7 @@ export default function ProductModal() {
               <p>не выше -18°С</p>
             </div>
           </div>
-          <div>
+          <div className={`${styles.infoContainer} ${styles.mixtureContainer}`}>
             <h3>Состав:</h3>
             <p>
               филе грудки кур замороженное, вода питьевая, мука пшеничная, масло
@@ -44,7 +46,7 @@ export default function ProductModal() {
               аскорбиновая, краситель аннато.
             </p>
           </div>
-          <div className={styles.priceContainer}>
+          <div className={`${styles.infoContainer} ${styles.priceContainer}`}>
             <h4>999 ₽</h4>
             <button className={styles.cartButton}>В корзину</button>
           </div>
