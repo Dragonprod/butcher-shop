@@ -17,6 +17,25 @@
   }
 }
 
+.totalContainer,
+.buyButtonContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 40px;
+  padding: 12px 24px;
+}
+
+.totalContainer {
+  margin: 24px 0 0;
+
+  h3 {
+    font-size: 24px;
+
+    &:last-child {
+      grid-column: 5/6;
+    }
+  }
+}
+
 .emptyCartTitle {
   text-align: center;
   color: var(--text-clr-2);
@@ -29,5 +48,18 @@
 
   &:hover {
     text-decoration: underline;
+  }
+}
+
+.buyButton {
+  grid-column: 5/6;
+  padding: 12px 24px;
+  color: var(--bg-clr-1);
+  background: var(--accent-clr-1);
+  border-radius: var(--border-radius);
+  transition: background 0.3s;
+
+  &:hover {
+    background: var(--accent-clr-2);
   }
 }
