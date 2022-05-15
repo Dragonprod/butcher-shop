@@ -5,7 +5,6 @@ import styles from './Modal.module.scss';
 export default function Modal({ children }) {
   const { modalActive: active, setModalActive: setActive } =
     useContext(UIContext);
-  console.log('modal', active);
 
   return (
     <div

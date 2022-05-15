@@ -4,8 +4,13 @@ import img1 from '../../../assets/images/1.png';
 import { UIContext } from '../../../context/UIContext';
 
 export default function ProductCard({ productCard }) {
-  const { setModalActive, setSelectedProduct, cartProducts, setCartProducts } =
-    useContext(UIContext);
+  const {
+    setModalActive,
+    setSelectedProduct,
+    cartProducts,
+    setCartProducts,
+    setIsProductAddedToCart,
+  } = useContext(UIContext);
 
   const handleProductModal = () => {
     setModalActive(true);
@@ -14,6 +19,7 @@ export default function ProductCard({ productCard }) {
 
   const handleAddToCart = () => {
     setCartProducts([...cartProducts, productCard]);
+    setIsProductAddedToCart(true);
   };
 
   // TODO: Dynamic Images

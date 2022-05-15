@@ -1,3 +1,4 @@
+import AddToCartTooltip from '../../../components/elements/AddToCartTooltip';
 import ProductModal from '../../../components/elements/ProductModal';
 import Banner from '../../../components/modules/Banner';
 import Footer from '../../../components/modules/Footer';
@@ -10,6 +11,7 @@ export default function CatalogPage() {
     <>
       <Header />
       <ProductModal />
+      <AddToCartTooltip />
       <main className={styles.mainGrid}>
         <Banner />
         <ProductCards />
