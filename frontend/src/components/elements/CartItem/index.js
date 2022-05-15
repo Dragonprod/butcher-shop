@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './CartItem.module.scss';
-import img1 from '../../../assets/images/1.png';
 import CloseIcon from '@mui/icons-material/Close';
 import { IconButton } from '@mui/material';
 import Counter from '../Counter';
 
-export default function CartItem({ cartItem, onClick }) {
+export default function CartItem({ cartItem, handleDelete }) {
+  const [price, setPrice] = useState(cartItem.price);
+
+  const handlePriceDecrease = () => setPrice(prevAmount => prevAmount - cartItem.price);
+  const handlePriceIncrease = () => setPrice(prevAmount => prevAmount + cartItem.price);
 
   return (
     <li className={styles.itemContainer}>
       <div className={styles.photoContainer}>
-        <img src={img1} alt={cartItem.name} />
+        <img src={cartItem.photoUrl} alt={cartItem.name} />
       </div>
       <div className={styles.contentContainer}>
         <h3>{cartItem.name}</h3>
@@ -20,13 +23,13 @@ export default function CartItem({ cartItem, onClick }) {
         <h4>{cartItem.price} ₽</h4>
       </div>
       <div className={styles.counterContainer}>
-        <Counter />
+        <Counter handlePriceIncrease={handlePriceIncrease} handlePriceDecrease={handlePriceDecrease} />
       </div>
       <div className={styles.sumContainer}>
-        <h4>{cartItem.price} ₽</h4>
+        <h4>{price} ₽</h4>
       </div>
       <div>
-        <IconButton aria-label='delete' onClick={onClick}>
+        <IconButton aria-label='delete' onClick={handleDelete}>
           <CloseIcon color='error' />
         </IconButton>
       </div>

@@ -1,6 +1,7 @@
 package shop.butcher.backend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import shop.butcher.backend.dto.request.CategoryRequest;
@@ -29,7 +30,7 @@ public class CategoryController {
 
     @GetMapping("/")
     public List<Category> getCategories() {
-        return categoryRepository.findAll();
+        return categoryRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
     @PostMapping("/")

@@ -4,13 +4,20 @@ import styles from './Counter.module.scss';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 
-export default function Counter() {
+export default function Counter({ handlePriceIncrease, handlePriceDecrease }) {
   const [amount, setAmount] = useState(1);
 
   const handleDecrease = () => {
-    if (amount > 1) setAmount(prevAmount => prevAmount - 1);
+    if (amount > 1) {
+      setAmount(prevAmount => prevAmount - 1);
+      handlePriceDecrease();
+    }
+    
   };
-  const handleIncrease = () => setAmount(prevAmount => prevAmount + 1);
+  const handleIncrease = () => {
+    setAmount(prevAmount => prevAmount + 1);
+    handlePriceIncrease();
+  }
 
   return (
     <div className={styles.mainContainer}>

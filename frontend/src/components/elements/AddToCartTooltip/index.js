@@ -1,5 +1,5 @@
 import { Alert, AlertTitle, Snackbar } from '@mui/material';
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { UIContext } from '../../../context/UIContext';
 
 export default function AddToCartTooltip() {
@@ -18,7 +18,7 @@ export default function AddToCartTooltip() {
       <Snackbar
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         open={isProductAddedToCart}
-        autoHideDuration={3000}
+        autoHideDuration={1500}
         onClose={handleClose}>
         <Alert severity='success' onClose={handleClose} sx={{ width: '100%' }}>
           <AlertTitle>Добавлено</AlertTitle>

@@ -1,15 +1,11 @@
 import { Link } from 'react-router-dom';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import CartItem from '../../elements/CartItem';
 import styles from './CartTable.module.scss';
 import { UIContext } from '../../../context/UIContext';
 
 export default function CartTable() {
   const { cartProducts, setCartProducts } = useContext(UIContext);
-
-  useEffect(() => {
-    // TODO: Fetch data
-  }, []);
 
   const handleDelete = id => {
     setCartProducts(cartProducts.filter(item => item.id !== id));
@@ -30,7 +26,7 @@ export default function CartTable() {
             <CartItem
               key={cartItem.id}
               cartItem={cartItem}
-              onClick={() => handleDelete(cartItem.id)}
+              handleDelete={() => handleDelete(cartItem.id)}
             />
           ))}
         </ul>

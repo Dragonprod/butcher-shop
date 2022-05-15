@@ -1,6 +1,5 @@
 import Modal from '../Modal';
 import styles from './ProductModal.module.scss';
-import img1 from '../../../assets/images/1.png';
 import { UIContext } from '../../../context/UIContext';
 import { useContext } from 'react';
 
@@ -17,13 +16,11 @@ export default function ProductModal() {
     setIsProductAddedToCart(true);
   };
 
-  // TODO: Dynamic Images
-
   return (
     <Modal>
       <div className={styles.mainGrid}>
         <div className={styles.photoContainer}>
-          <img src={img1} alt='nice' />
+          <img src={selectedProduct.photoUrl} alt={selectedProduct.name} />
         </div>
         <div className={styles.contentContainer}>
           <div
@@ -40,7 +37,7 @@ export default function ProductModal() {
             </div>
             <div>
               <h3>Срок годности:</h3>
-              <p>{selectedProduct.shelfLife} суток</p>
+              <p>{selectedProduct.expirationDate} суток</p>
             </div>
             <div>
               <h3>Условия хранения:</h3>

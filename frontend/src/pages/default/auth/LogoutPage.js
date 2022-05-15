@@ -8,8 +8,11 @@ export default function LogoutPage() {
 
   useEffect(() => {
     setisAuth(false);
-    localStorage.setItem('isAuth', 'false');
-    navigate('/');
+    localStorage.removeItem('isAuth');
+    setTimeout(() => {
+      navigate('/');
+    }, 1000)
+
   }, [setisAuth, navigate]);
 
   return <p>Выполняется выход...</p>;
