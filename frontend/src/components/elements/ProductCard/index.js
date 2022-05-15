@@ -4,10 +4,11 @@ import img1 from '../../../assets/images/1.png';
 import { UIContext } from '../../../context/UIContext';
 
 export default function ProductCard({ productCard }) {
-  const { setModalActive } = useContext(UIContext);
+  const { setModalActive, setSelectedProduct } = useContext(UIContext);
 
   const handleProductModal = () => {
     setModalActive(true);
+    setSelectedProduct(productCard);
   };
 
   // TODO: Dynamic Images

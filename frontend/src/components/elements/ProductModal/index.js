@@ -1,9 +1,14 @@
 import Modal from '../Modal';
 import styles from './ProductModal.module.scss';
 import img1 from '../../../assets/images/1.png';
+import { UIContext } from '../../../context/UIContext';
+import { useContext } from 'react';
 
 export default function ProductModal() {
+  const { selectedProduct } = useContext(UIContext);
+
   // TODO: Dynamic Images
+
   return (
     <Modal>
       <div className={styles.mainGrid}>
@@ -24,7 +29,7 @@ export default function ProductModal() {
             className={`${styles.infoContainer} ${styles.characteristicContainer}`}>
             <div>
               <h3>Вес продукта:</h3>
-              <p>0,250 кг</p>
+              <p>{selectedProduct.weight}</p>
             </div>
             <div>
               <h3>Срок годности:</h3>
@@ -48,7 +53,7 @@ export default function ProductModal() {
             </p>
           </div>
           <div className={`${styles.infoContainer} ${styles.priceContainer}`}>
-            <h4>999 ₽</h4>
+            <h4>{selectedProduct.price} ₽</h4>
             <button className={styles.cartButton}>В корзину</button>
           </div>
         </div>
