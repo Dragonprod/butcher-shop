@@ -20,38 +20,26 @@ export default function ProductModal() {
             className={`${styles.infoContainer} ${styles.descriptionContainer}`}>
             <h2>{selectedProduct.name}</h2>
             <h3>Описание продукта:</h3>
-            <p>
-              мини наггетсы – это не только куриное филе в тонкой хрустящей
-              панировки, но и мини размер и разнообразные формы, которые
-              обязательно понравятся детям.
-            </p>
+            <p>{selectedProduct.description}</p>
           </div>
           <div
             className={`${styles.infoContainer} ${styles.characteristicContainer}`}>
             <div>
               <h3>Вес продукта:</h3>
-              <p>{selectedProduct.weight}</p>
+              <p>{selectedProduct.weight} кг</p>
             </div>
             <div>
               <h3>Срок годности:</h3>
-              <p>425 суток</p>
+              <p>{selectedProduct.shelfLife} суток</p>
             </div>
             <div>
               <h3>Условия хранения:</h3>
-              <p>не выше -18°С</p>
+              <p>{selectedProduct.storageConditions}</p>
             </div>
           </div>
           <div className={`${styles.infoContainer} ${styles.mixtureContainer}`}>
             <h3>Состав:</h3>
-            <p>
-              филе грудки кур замороженное, вода питьевая, мука пшеничная, масло
-              растительное подсолнечное рафинированное дезодорированное,
-              крахмалы (гороховый, картофельный), волокна пищевые (соевые),
-              белок соевый, соль, загуститель гуаровая камедь, регулятор
-              кислотности E451(i), стабилизаторы (Е450(iii), Е450(v)), дрожжи,
-              куркума, ароматизатор натуральный, антиокислитель кислота
-              аскорбиновая, краситель аннато.
-            </p>
+            <p>{selectedProduct.composition}</p>
           </div>
           <div className={`${styles.infoContainer} ${styles.priceContainer}`}>
             <h4>{selectedProduct.price} ₽</h4>
