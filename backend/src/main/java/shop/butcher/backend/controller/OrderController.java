@@ -1,6 +1,7 @@
 package shop.butcher.backend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -67,12 +68,6 @@ public class OrderController {
     public Order getOrder(@PathVariable("id") Long id) {
         return orderRepository.findById(id).orElseThrow(() -> new RuntimeException("Error: Order is not found."));
     }
-
-//    @GetMapping("/{userid}")
-//    public Order getUserOrders(@PathVariable("userid") Long userid) {
-//        User user = orderRepository.findById(userid).orElseThrow(() -> new RuntimeException("Error: User is not found."));
-//        return orderRepository.findById(id).orElseThrow(() -> new RuntimeException("Error: Order is not found."));
-//    }
 
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")

@@ -31,9 +31,6 @@ public class Order {
     private Boolean isComplete;
 
     @OneToMany(cascade = CascadeType.ALL)
-//    @JoinTable(name = "order_product_mapping",
-//            joinColumns = {@JoinColumn(name = "order_id", referencedColumnName = "id")},
-//            inverseJoinColumns = {@JoinColumn(name = "product_id", referencedColumnName = "id")})
     @JsonManagedReference
     private Map<Integer, Product> productsWithAmount;
 
