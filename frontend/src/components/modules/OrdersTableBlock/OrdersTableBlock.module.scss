@@ -3,40 +3,21 @@
   margin: 0 0 16px;
 }
 
-.block {
-  display: grid;
-  grid-template-columns: 0.5fr 1fr;
+.table {
   width: var(--max-width);
   background: var(--bg-clr-1);
   border-radius: var(--border-radius);
+  overflow: hidden;
 
-  .avatarContainer,
-  .infoContainer {
+  .tableHeader {
     display: grid;
-    padding: 32px;
-  }
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 40px;
+    align-items: center;
+    padding: 12px 24px;
+    border-bottom: 1px solid #ddd;
 
-  .avatarContainer {
-    place-content: center;
-
-    img {
-      max-width: 95%;
+    h3 {
+      color: var(--text-clr-2);
     }
   }
-}
-
-.login,
-.password {
-  label[data-shrink='true'] {
-    color: var(--accent-clr-1) !important;
-  }
-}
-
-.submit:hover {
-  background-color: var(--accent-clr-2) !important;
-}
-
-.form {
-  max-width: 394px;
-  transition: opacity 0.3s;
 }
