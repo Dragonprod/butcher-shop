@@ -2,6 +2,7 @@ package shop.butcher.backend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import shop.butcher.backend.dto.request.ProductReequest;
 import shop.butcher.backend.dto.response.MessageResponse;
@@ -28,6 +29,7 @@ public class ProductController {
     }
 
     @PostMapping("")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> createProduct(@Valid @RequestBody ProductReequest productRequest) {
         if (productRepository.existsByName(productRequest.getName())) {
             return ResponseEntity
@@ -59,11 +61,13 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public Product getProduct(@PathVariable("id") Long id) {
         return productRepository.findById(id).orElseThrow(() -> new RuntimeException("Error: Product is not found."));
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> deleteProduct(@PathVariable("id") Long id) {
         productRepository.deleteById(id);
         return ResponseEntity.ok(new MessageResponse("Product with id " + id + " deleted successfully"));

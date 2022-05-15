@@ -2,6 +2,7 @@ package shop.butcher.backend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import shop.butcher.backend.dto.request.OrderRequest;
 import shop.butcher.backend.dto.request.ProductReequest;
@@ -53,6 +54,7 @@ public class OrderController {
     }
 
     @PostMapping("/{id}/complete")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> completeOrder(@PathVariable("id") Long id) {
         Order order = orderRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Error: Order is not found."));
@@ -67,6 +69,7 @@ public class OrderController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> deleteOrder(@PathVariable("id") Long id) {
         orderRepository.deleteById(id);
         return ResponseEntity.ok(new MessageResponse("Order with id " + id + " deleted successfully"));
