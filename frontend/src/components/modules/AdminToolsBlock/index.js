@@ -5,11 +5,11 @@ import { UIContext } from '../../../context/UIContext';
 import styles from './AdminToolsBlock.module.scss';
 
 export default function AdminToolsBlock() {
-  const { setModalActive } = useContext(UIContext);
+  const { setModalActive, setAdminModalType } = useContext(UIContext);
 
   const handleProductModal = type => {
-    if (type === ADD_CATEGORY) return;
-    if (type === ADD_PRODUCT) return;
+    if (type === ADD_CATEGORY) setAdminModalType(ADD_CATEGORY);
+    if (type === ADD_PRODUCT) setAdminModalType(ADD_PRODUCT);
     setModalActive(true);
   };
 
