@@ -11,18 +11,6 @@ export default function OrdersTableBlock() {
     // TODO: Fetch Data
   }, []);
 
-  const handleLoginChange = e => {
-    setLogin(e.target.value);
-  };
-
-  const handlePasswordChange = e => {
-    setPassword(e.target.value);
-  };
-
-  const handleSubmit = async e => {
-    e.preventDefault();
-  };
-
   return (
     <div>
       <h2 className={styles.title}>Заказы</h2>
