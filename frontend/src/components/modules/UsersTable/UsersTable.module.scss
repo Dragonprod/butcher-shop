@@ -1,5 +1,6 @@
 .table {
   width: 100%;
+  max-width: var(--max-width);
   background: var(--bg-clr-1);
   border-radius: var(--border-radius);
   overflow: hidden;

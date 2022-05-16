@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { UIContext } from '../../../context/UIContext';
 import { defaultUsers } from '../../../temp';
+import UserItem from '../../elements/UserItem';
 import styles from './UsersTable.module.scss';
 
 export default function UsersTable() {
@@ -19,11 +20,11 @@ export default function UsersTable() {
             <h3>Логин</h3>
             <h3>Почта</h3>
             <h3>Пароль</h3>
-            <h3>Количество заказов</h3>
+            <h3>Кол-во заказов</h3>
             <h3>Роль</h3>
           </div>
           {users.map(user => (
-            <div></div>
+            <UserItem key={user.id} userItem={user} />
           ))}
         </ul>
       ) : (

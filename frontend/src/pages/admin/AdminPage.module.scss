@@ -1,6 +1,7 @@
 .mainContainer {
-  display: grid;
-  place-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: calc(72px + 48px) 16px 72px calc(300px + 16px);
   // min-height: calc(100vh - 72px);
   min-height: 100vh;
