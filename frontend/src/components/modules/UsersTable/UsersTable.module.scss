@@ -1,12 +1,12 @@
 .table {
-  width: var(--max-width);
+  width: 100%;
   background: var(--bg-clr-1);
   border-radius: var(--border-radius);
   overflow: hidden;
 
   .tableHeader {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 40px;
+    grid-template-columns: 0.25fr 1fr 1fr 1fr 1fr 1fr 40px;
     align-items: center;
     padding: 12px 24px;
     border-bottom: 1px solid #ddd;

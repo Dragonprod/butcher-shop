@@ -15,11 +15,12 @@ export default function UsersTable() {
       {users.length > 0 ? (
         <ul className={styles.table}>
           <div className={styles.tableHeader}>
-            <h3>Фото</h3>
-            <h3>Описание</h3>
-            <h3>Цена</h3>
-            <h3>Количество</h3>
-            <h3>Сумма</h3>
+            <h3>ID</h3>
+            <h3>Логин</h3>
+            <h3>Почта</h3>
+            <h3>Пароль</h3>
+            <h3>Количество заказов</h3>
+            <h3>Роль</h3>
           </div>
           {users.map(user => (
             <div></div>
