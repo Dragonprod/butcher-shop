@@ -1,5 +1,6 @@
 import React from 'react';
 import AddCategoryModal from '../../../components/elements/AddCategoryModal';
+import AddProductModal from '../../../components/elements/AddProductModal';
 import AdminSideBar from '../../../components/modules/AdminSideBar';
 import AdminToolsBlock from '../../../components/modules/AdminToolsBlock';
 import Header from '../../../components/modules/Header';
@@ -11,6 +12,7 @@ export default function AdminProductsPage() {
     <>
       <Header isOnAdminPage />
       <AddCategoryModal />
+      <AddProductModal />
       <section className={styles.mainContainer}>
         <AdminSideBar />
         <div className={styles.tableContainer}>
