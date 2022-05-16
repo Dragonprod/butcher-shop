@@ -8,3 +8,10 @@
 .submit:hover {
   background-color: var(--accent-clr-2) !important;
 }
+
+.form {
+  max-width: 394px;
+  max-height: 500px;
+  overflow: auto;
+  padding: 0 12px;
+}
