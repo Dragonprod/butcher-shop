@@ -1,0 +1,17 @@
+.block {
+  margin: 0 0 128px;
+
+  .buttonsBlock {
+    display: flex;
+    gap: 24px;
+  }
+}
+
+.title {
+  margin: 0 0 24px;
+  font-size: 28px;
+}
+
+.submit:hover {
+  background-color: var(--accent-clr-2) !important;
+}
