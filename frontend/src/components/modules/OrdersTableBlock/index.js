@@ -3,8 +3,6 @@ import { UIContext } from '../../../context/UIContext';
 import styles from './OrdersTableBlock.module.scss';
 
 export default function OrdersTableBlock() {
-  const [login, setLogin] = useState('user@mail.ru');
-  const [password, setPassword] = useState('123456');
   const { cartProducts } = useContext(UIContext);
 
   useEffect(() => {
