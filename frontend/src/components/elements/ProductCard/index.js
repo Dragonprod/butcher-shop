@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styles from './ProductCard.module.scss';
 import { UIContext } from '../../../context/UIContext';
+import img0 from '../../../assets/images/login0.jpg';
 
 export default function ProductCard({ productCard, isOnAdminPage }) {
   const {
@@ -36,7 +37,8 @@ export default function ProductCard({ productCard, isOnAdminPage }) {
   return (
     <div className={styles.card}>
       <div className={styles.photoContainer} onClick={handleProductModal}>
-        <img src={productCard.photoUrl} alt={productCard.name} />
+        {/* <img src={productCard.photoUrl} alt={productCard.name} /> */}
+        <img src={img0} alt={productCard.name} />
       </div>
       <div className={styles.contentContainer}>
         <h3 onClick={handleProductModal}>{productCard.name}</h3>
