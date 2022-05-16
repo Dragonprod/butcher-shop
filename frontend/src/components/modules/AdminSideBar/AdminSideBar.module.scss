@@ -3,7 +3,7 @@
   top: 73px;
   left: 0;
   width: 300px;
-  height: 100%;
+  height: calc(100vh - 73px);
   padding: 16px;
   background: var(--bg-clr-1);
 }
