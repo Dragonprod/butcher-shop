@@ -6,10 +6,6 @@ import styles from './UsersTable.module.scss';
 export default function UsersTable() {
   const [users, setUsers] = useState(defaultUsers);
 
-  const handleDelete = id => {};
-
-  const handleAlertModal = async e => {};
-
   return (
     <>
       {users.length > 0 ? (
