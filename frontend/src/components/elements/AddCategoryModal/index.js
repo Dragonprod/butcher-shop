@@ -47,7 +47,7 @@ export default function AddCategoryModal() {
               lineHeight: '145%',
             },
           }}>
-          Войти
+          Создать
         </Button>
       </div>
     </Modal>
