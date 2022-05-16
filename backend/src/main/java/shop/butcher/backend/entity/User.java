@@ -46,6 +46,14 @@ public class User {
         this.password = password;
     }
 
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
+    }
+
     public Long getId() {
         return id;
     }

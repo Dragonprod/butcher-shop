@@ -1,13 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { defaultOrders } from '../../../temp';
 import OrderItem from '../../elements/OrderItem';
 import styles from './OrdersTableBlock.module.scss';
+import API from '../../../api';
 
 export default function OrdersTableBlock() {
-  const [orderItems, setOrderItems] = useState(defaultOrders);
+  const [orderItems, setOrderItems] = useState([]);
 
   useEffect(() => {
-    // TODO: Fetch Data
+    const getOrdersData = async e => {
+      const user = JSON.parse(localStorage.getItem('user'))
+      try {
+        const ordersResponse = await API.get(`/order/user/${user.id}`);
+        setOrderItems(ordersResponse.data);
+      }
+      catch (err) {
+        console.log(err.response)
+      }
+    };
+    getOrdersData();
   }, []);
 
   return (

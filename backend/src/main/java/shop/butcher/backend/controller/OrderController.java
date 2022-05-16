@@ -61,6 +61,13 @@ public class OrderController {
         return ResponseEntity.ok(new MessageResponse("Order completed successfully!"));
     }
 
+    @GetMapping("/user/{userid}")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public Set<Order> getOrderByUserId(@PathVariable("userid") Long id) {
+        User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("Error: User is not found."));
+        return user.getOrders();
+    }
+
     @GetMapping("/{id}")
     public Order getOrder(@PathVariable("id") Long id) {
         return orderRepository.findById(id).orElseThrow(() -> new RuntimeException("Error: Order is not found."));

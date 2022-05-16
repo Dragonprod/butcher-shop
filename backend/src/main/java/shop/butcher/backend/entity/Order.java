@@ -16,7 +16,7 @@ public class Order {
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="user_id", nullable=false)
     @JsonBackReference
     private User user;
