@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { defaultUsers } from '../../../temp';
 import UserItem from '../../elements/UserItem';
 import styles from './UsersTable.module.scss';
 import API from '../../../api';
@@ -29,6 +28,7 @@ export default function UsersTable() {
       console.log(err.response)
     }
   }
+  
   return (
     <>
       <div className={styles.tableContainer}>
