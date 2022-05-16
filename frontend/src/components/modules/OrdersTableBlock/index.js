@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { UIContext } from '../../../context/UIContext';
+import React, { useEffect, useState } from 'react';
+import { defaultOrders } from '../../../temp';
 import OrderItem from '../../elements/OrderItem';
 import styles from './OrdersTableBlock.module.scss';
 
 export default function OrdersTableBlock() {
-  const [orderItems, setOrderItems] = useState([]);
+  const [orderItems, setOrderItems] = useState(defaultOrders);
 
   useEffect(() => {
     // TODO: Fetch Data

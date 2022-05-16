@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import styles from './OrderItem.module.scss';
 
 const OrderItem = ({ orderItem }) => {
