@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './AdminOrderItem.module.scss';
+import img1 from '../../../assets/images/login0.jpg';
 
 export default function AdminOrderItem({ adminOrder }) {
   return (
@@ -8,19 +9,22 @@ export default function AdminOrderItem({ adminOrder }) {
         <h4>{adminOrder.id}</h4>
       </div>
       <div>
-        <h4>{adminOrder.username}</h4>
-      </div>
-      <div>
         <h4>{adminOrder.email}</h4>
       </div>
-      <div>
-        <h4>{adminOrder.password.slice(0, 10)}...</h4>
+      <div className={styles.ordersContainer}>
+        {adminOrder.products.map(product => (
+          <div key={product.id} className={styles.productContainer}>
+            {/* <img src={product.photoUrl} alt={product.name} /> */}
+            <img src={img1} alt={product.name} />
+            <h3>{product.name}</h3>
+          </div>
+        ))}
       </div>
       <div>
-        <h4>{adminOrder.orderAmount ? adminOrder.orderAmount : '-'}</h4>
+        <h4>{adminOrder.createDate}</h4>
       </div>
       <div>
-        <h4>{adminOrder.role}</h4>
+        <h4>{adminOrder.sum}</h4>
       </div>
       <div>
         <button>Закрыть</button>
