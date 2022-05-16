@@ -3,7 +3,7 @@ import styles from './ProductCards.module.scss';
 import ProductCard from '../../elements/ProductCard';
 import API from '../../../api';
 
-export default function ProductCards() {
+export default function ProductCards({ isOnAdminPage }) {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
