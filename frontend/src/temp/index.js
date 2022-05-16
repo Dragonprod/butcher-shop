@@ -186,4 +186,24 @@ export const defaultAdminCategories = [
       },
     ],
   },
+  {
+    id: 1,
+    name: 'Стейки',
+    products: [
+      {
+        id: 0,
+        name: 'Стейк из говядины',
+        photoUrl: './assets/images/1.png',
+        weight: 2,
+        price: 2000,
+      },
+      {
+        id: 1,
+        name: 'Стейк из баранины',
+        photoUrl: './assets/images/1.png',
+        weight: 3,
+        price: 3000,
+      },
+    ],
+  },
 ];
