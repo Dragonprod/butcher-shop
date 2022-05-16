@@ -21,7 +21,11 @@ export default function ProductCards({ isOnAdminPage }) {
           <h2>{category.name}</h2>
           <div className={styles.productsGrid}>
             {category.products.map(product => (
-              <ProductCard key={product.id} productCard={product} />
+              <ProductCard
+                key={product.id}
+                productCard={product}
+                isOnAdminPage
+              />
             ))}
           </div>
         </div>

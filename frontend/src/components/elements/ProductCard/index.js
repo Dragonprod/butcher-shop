@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styles from './ProductCard.module.scss';
 import { UIContext } from '../../../context/UIContext';
 
-export default function ProductCard({ productCard }) {
+export default function ProductCard({ productCard, isOnAdminPage }) {
   const {
     setModalActive,
     setSelectedProduct,
@@ -11,7 +11,7 @@ export default function ProductCard({ productCard }) {
     setIsProductAddedToCart,
     setTotalPrice,
     cartProductsWithAmount,
-    setCartProductsWithAmount
+    setCartProductsWithAmount,
   } = useContext(UIContext);
 
   const handleProductModal = () => {
@@ -21,20 +21,21 @@ export default function ProductCard({ productCard }) {
 
   const handleAddToCart = () => {
     if (cartProducts.indexOf(productCard) === -1) {
-      setCartProducts([...cartProducts, productCard])
+      setCartProducts([...cartProducts, productCard]);
       setIsProductAddedToCart(true);
-      setTotalPrice(prevAmount => prevAmount + productCard.price)
+      setTotalPrice(prevAmount => prevAmount + productCard.price);
       if (cartProductsWithAmount[productCard.id] === undefined) {
-        setCartProductsWithAmount(prevState => ({ ...prevState, [productCard.id.toString()]: 1 }))
+        setCartProductsWithAmount(prevState => ({
+          ...prevState,
+          [productCard.id.toString()]: 1,
+        }));
       }
     }
   };
 
   return (
     <div className={styles.card}>
-      <div
-        className={styles.photoContainer}
-        onClick={handleProductModal}>
+      <div className={styles.photoContainer} onClick={handleProductModal}>
         <img src={productCard.photoUrl} alt={productCard.name} />
       </div>
       <div className={styles.contentContainer}>
@@ -42,10 +43,8 @@ export default function ProductCard({ productCard }) {
         <p>{productCard.weight} кг</p>
         <div className={styles.priceContainer}>
           <h4>{productCard.price} ₽</h4>
-          <button
-            className={styles.cartButton}
-            onClick={handleAddToCart}>
-            В корзину
+          <button className={styles.cartButton} onClick={handleAddToCart}>
+            {isOnAdminPage ? 'Удалить' : 'В корзину'}
           </button>
         </div>
       </div>
