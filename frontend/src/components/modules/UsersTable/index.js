@@ -8,6 +8,7 @@ export default function UsersTable() {
 
   return (
     <>
+      {/* <h2 className={styles.title}>Незавершённые заказы</h2> */}
       {users.length > 0 ? (
         <ul className={styles.table}>
           <div className={styles.tableHeader}>
