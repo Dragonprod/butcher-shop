@@ -10,6 +10,7 @@ import UIContextProvider from './context/UIContext';
 import ProfilePage from './pages/user/profile/ProfilePage';
 import AdminPage from './pages/admin/AdminPage';
 import OrdersPage from './pages/admin/orders/OrdersPage';
+import AdminProductsPage from './pages/admin/products/AdminProductsPage';
 
 function App() {
   const [isAuth, setisAuth] = useState(false);
@@ -91,6 +92,15 @@ function App() {
               element={
                 <ProtectedRoute>
                   <OrdersPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              exact
+              path='/admin/products'
+              element={
+                <ProtectedRoute>
+                  <AdminProductsPage />
                 </ProtectedRoute>
               }
             />
