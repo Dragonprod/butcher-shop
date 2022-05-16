@@ -27,7 +27,7 @@ export default function AdminOrderItem({ adminOrder }) {
         <h4>{adminOrder.sum}</h4>
       </div>
       <div>
-        <button>Закрыть</button>
+        <button className={styles.completeButton}>Закрыть</button>
       </div>
     </li>
   );
