@@ -10,7 +10,10 @@ export default function AdminProductsPage() {
       <Header isOnAdminPage />
       <section className={styles.mainContainer}>
         <AdminSideBar />
-        <ProductCards isOnAdminPage />
+        <div className={styles.tableContainer}>
+          <h2 className={styles.title}>Пользователи</h2>
+          <ProductCards isOnAdminPage />
+        </div>
       </section>
     </>
   );
