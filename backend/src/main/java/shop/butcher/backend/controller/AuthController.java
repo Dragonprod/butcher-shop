@@ -75,14 +75,11 @@ public class AuthController {
                     .badRequest()
                     .body(new MessageResponse("Error: Email is already in use!"));
         }
-
         User user = new User(registerRequest.getUsername(),
                 registerRequest.getEmail(),
                 encoder.encode(registerRequest.getPassword()));
-
         Set<String> strRoles = registerRequest.getRole();
         Set<Role> roles = new HashSet<>();
-
         if (strRoles == null) {
             Role userRole = roleRepository.findByName(RoleEnum.ROLE_USER)
                     .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
@@ -100,7 +97,6 @@ public class AuthController {
                 }
             });
         }
-
         user.setRoles(roles);
         userRepository.save(user);
 

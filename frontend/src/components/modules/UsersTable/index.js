@@ -1,14 +1,36 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { defaultUsers } from '../../../temp';
 import UserItem from '../../elements/UserItem';
 import styles from './UsersTable.module.scss';
+import API from '../../../api';
 
 export default function UsersTable() {
-  const [users, setUsers] = useState(defaultUsers);
+  const [users, setUsers] = useState([]);
 
+  useEffect(() => {
+    const getUsersData = async e => {
+      try {
+        const usersResponse = await API.get(`/users`);
+        setUsers(usersResponse.data);
+      }
+      catch (err) {
+        console.log(err.response)
+      }
+    };
+    getUsersData();
+  }, [])
+
+  const handleDelete = async id => {
+    try {
+      await API.delete(`/users/${id}`);
+      setUsers(users.filter(item => item.id !== id));
+    }
+    catch (err) {
+      console.log(err.response)
+    }
+  }
   return (
     <>
-      {/* <h2 className={styles.title}>Незавершённые заказы</h2> */}
       {users.length > 0 ? (
         <ul className={styles.table}>
           <div className={styles.tableHeader}>
@@ -20,7 +42,7 @@ export default function UsersTable() {
             <h3>Роль</h3>
           </div>
           {users.map(user => (
-            <UserItem key={user.id} userItem={user} />
+            <UserItem key={user.id} userItem={user} handleDelete={() => handleDelete(user.id)}/>
           ))}
         </ul>
       ) : (
