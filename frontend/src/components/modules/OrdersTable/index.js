@@ -12,13 +12,13 @@ export default function OrdersTable() {
         <ul className={styles.table}>
           <div className={styles.tableHeader}>
             <h3>ID</h3>
-            <h3>Логин</h3>
-            <h3>Почта</h3>
-            <h3>Пароль</h3>
-            <h3>Кол-во заказов</h3>
-            <h3>Роль</h3>
+            <h3>Пользователь</h3>
+            <h3>ID заказа</h3>
+            <h3>Список товаров</h3>
+            <h3>Дата оформления</h3>
+            <h3>Сумма</h3>
           </div>
-          {adminOrders.map(user => (
+          {adminOrders.map(adminOrder => (
             <></>
             // <UserItem key={user.id} userItem={user} />
           ))}
