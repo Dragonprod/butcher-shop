@@ -5,39 +5,31 @@ import styles from './OrdersTable.module.scss';
 import API from '../../../api';
 
 export default function OrdersTable() {
-  const [uncompletedOrders, setUncompletedOrders] = useState(
-    defaultAdminOrders.filter(item => !item.isCompleted)
-  );
-  const [completedOrders, setCompletedOrders] = useState(
-    defaultAdminOrders.filter(item => item.isCompleted)
-  );
+  const [uncompletedOrders, setUncompletedOrders] = useState([]);
+  const [completedOrders, setCompletedOrders] = useState([]);
 
-  // useEffect(() => {
-  //   usersData.forEach(user => {
-  //     user.orders.forEach(order => {
-  //       let data = [];
-  //       Object.values(order.productsWithAmount).map(product => (
-  //         data.push(product)
-  //       ));
-  //       const row = {
-  //         id: order.id,
-  //         email: user.email,
-  //         totalSum: order.totalSum,
-  //         products: data,
-  //         createdAt: order.createdAt,
-  //         complete: order.complete
-  //       }
-  //       if (order.complete) {
-  //         let filteredCompleteOrders = completedOrders.filter(e => e.id !== row.id);
-  //         setCompletedOrders([...filteredCompleteOrders, row])
-  //       }
-  //       else {
-  //         let filteredUnCompleteOrders = uncompletedOrders.filter(e => e.id !== row.id);
-  //         setUncompletedOrders([...filteredUnCompleteOrders, row])
-  //       }
-  //     });
-  //   })
-  // }, [usersData, completedOrders, uncompletedOrders, setUncompletedOrders, setCompletedOrders])
+  useEffect(() => {
+    const getCompletedOrdersData = async e => {
+      try {
+        const completedOrdersResponse = await API.get(`/order/sorted?isComplete=true`);
+        setCompletedOrders(completedOrdersResponse.data);
+      }
+      catch (err) {
+        console.log(err.response)
+      }
+    };
+    const getUncompletedOrdersData = async e => {
+      try {
+        const uncompletedOrdersResponse = await API.get(`/order/sorted?isComplete=false`);
+        setUncompletedOrders(uncompletedOrdersResponse.data);
+      }
+      catch (err) {
+        console.log(err.response)
+      }
+    };
+    getCompletedOrdersData();
+    getUncompletedOrdersData();
+  }, [])
 
   const handleCompleteOrder = async id => {
     try {
@@ -58,7 +50,6 @@ export default function OrdersTable() {
           <ul className={styles.table}>
             <div className={styles.tableHeader}>
               <h3>ID заказа</h3>
-              <h3>Пользователь</h3>
               <h3>Список товаров</h3>
               <h3>Дата оформления</h3>
               <h3>Сумма</h3>
@@ -80,7 +71,6 @@ export default function OrdersTable() {
           <ul className={styles.table}>
             <div className={styles.tableHeader}>
               <h3>ID заказа</h3>
-              <h3>Пользователь</h3>
               <h3>Список товаров</h3>
               <h3>Дата оформления</h3>
               <h3>Сумма</h3>
