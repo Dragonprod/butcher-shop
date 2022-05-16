@@ -158,10 +158,10 @@ export const defaultAdminOrders = [
   },
 ];
 
-export const defaultAdminProducts = [
+export const defaultAdminCategories = [
   {
     id: 0,
-    email: 'user0@mail.ru',
+    name: 'Бургеры',
     products: [
       {
         id: 0,
@@ -179,56 +179,5 @@ export const defaultAdminProducts = [
         photoUrl: './assets/images/1.png',
       },
     ],
-    createDate: '16.05.2002',
-    sum: 999,
-    isCompleted: false,
-  },
-  {
-    id: 1,
-    email: 'user1@mail.ru',
-    products: [
-      {
-        id: 0,
-        name: 'Чикен бургер',
-        photoUrl: './assets/images/1.png',
-      },
-      {
-        id: 1,
-        name: 'Гамбургер',
-        photoUrl: './assets/images/1.png',
-      },
-      {
-        id: 2,
-        name: 'Чизбургер',
-        photoUrl: './assets/images/1.png',
-      },
-    ],
-    createDate: '17.11.2002',
-    sum: 6375,
-    isCompleted: false,
-  },
-  {
-    id: 2,
-    email: 'user2@mail.ru',
-    products: [
-      {
-        id: 0,
-        name: 'Чикен бургер',
-        photoUrl: './assets/images/1.png',
-      },
-      {
-        id: 1,
-        name: 'Гамбургер',
-        photoUrl: './assets/images/1.png',
-      },
-      {
-        id: 2,
-        name: 'Чизбургер',
-        photoUrl: './assets/images/1.png',
-      },
-    ],
-    createDate: '17.11.2002',
-    sum: 7482,
-    isCompleted: true,
   },
 ];
