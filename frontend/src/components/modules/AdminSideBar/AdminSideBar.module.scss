@@ -4,6 +4,21 @@
   left: 0;
   width: 300px;
   height: calc(100vh - 73px);
-  padding: 16px;
+  padding: 32px 16px;
   background: var(--bg-clr-1);
+
+  .menu {
+    display: grid;
+
+    a {
+      padding: 16px;
+      border-radius: var(--border-radius);
+      transition: background 0.3s, color 0.3s;
+
+      &:hover {
+        color: #fff;
+        background: var(--accent-clr-1);
+      }
+    }
+  }
 }
