@@ -11,36 +11,37 @@ export default function OrdersTable() {
   useEffect(() => {
     const getCompletedOrdersData = async e => {
       try {
-        const completedOrdersResponse = await API.get(`/order/sorted?isComplete=true`);
+        const completedOrdersResponse = await API.get(
+          `/order/sorted?isComplete=true`
+        );
         setCompletedOrders(completedOrdersResponse.data);
-      }
-      catch (err) {
-        console.log(err.response)
+      } catch (err) {
+        console.log(err.response);
       }
     };
     const getUncompletedOrdersData = async e => {
       try {
-        const uncompletedOrdersResponse = await API.get(`/order/sorted?isComplete=false`);
+        const uncompletedOrdersResponse = await API.get(
+          `/order/sorted?isComplete=false`
+        );
         setUncompletedOrders(uncompletedOrdersResponse.data);
-      }
-      catch (err) {
-        console.log(err.response)
+      } catch (err) {
+        console.log(err.response);
       }
     };
     getCompletedOrdersData();
     getUncompletedOrdersData();
-  }, [])
+  }, []);
 
   const handleCompleteOrder = async id => {
     try {
       await API.post(`/order/${id}/complete`);
       setUncompletedOrders(uncompletedOrders.filter(item => item.id !== id));
       setUncompletedOrders(completedOrders.filter(item => item.id !== id));
+    } catch (err) {
+      console.log(err.response);
     }
-    catch (err) {
-      console.log(err.response)
-    }
-  }
+  };
 
   return (
     <>
@@ -76,7 +77,11 @@ export default function OrdersTable() {
               <h3>Сумма</h3>
             </div>
             {completedOrders.map(adminOrder => (
-              <AdminOrderItem key={adminOrder.id} adminOrder={adminOrder} handleCompleteOrder={() => handleCompleteOrder(adminOrder.id)} />
+              <AdminOrderItem
+                key={adminOrder.id}
+                adminOrder={adminOrder}
+                handleCompleteOrder={() => handleCompleteOrder(adminOrder.id)}
+              />
             ))}
           </ul>
         ) : (

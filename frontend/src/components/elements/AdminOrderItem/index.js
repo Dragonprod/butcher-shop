@@ -3,7 +3,7 @@ import styles from './AdminOrderItem.module.scss';
 import img1 from '../../../assets/images/login0.jpg';
 
 export default function AdminOrderItem({ adminOrder, handleCompleteOrder }) {
-  console.log(adminOrder)
+  console.log(adminOrder);
   return (
     <li className={styles.itemContainer}>
       <div>
@@ -25,7 +25,11 @@ export default function AdminOrderItem({ adminOrder, handleCompleteOrder }) {
       </div>
       <div>
         {!adminOrder.complete && (
-          <button className={styles.completeButton} onClick={handleCompleteOrder}>Закрыть</button>
+          <button
+            className={styles.completeButton}
+            onClick={handleCompleteOrder}>
+            Закрыть
+          </button>
         )}
       </div>
     </li>
