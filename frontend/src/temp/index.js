@@ -82,3 +82,21 @@ export const defaultUsers = [
     role: 'Администратор',
   },
 ];
+
+export const defaultAdminOrders = [
+  {
+    id: 0,
+    username: 'user0',
+    email: 'user0@mail.ru',
+    password: '$2a$10$mqFdnZjD6MTtF1CPTAc1Ke1UjRblWybWDUEO9IyuOWjxdNMwsII1',
+    orderAmount: 10,
+    role: 'Пользователь',
+  },
+  {
+    id: 1,
+    username: 'admin',
+    email: 'admin@mail.ru',
+    password: '$2a$10$mqFdnZjD6MTtF1CPTAc1Ke1UjRblWybWDUEO9IyuOWjxdNMwsII1',
+    role: 'Администратор',
+  },
+];
