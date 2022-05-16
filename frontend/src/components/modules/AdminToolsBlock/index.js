@@ -1,12 +1,15 @@
 import { Button } from '@mui/material';
 import React, { useContext } from 'react';
+import { ADD_CATEGORY, ADD_PRODUCT } from '../../../constants';
 import { UIContext } from '../../../context/UIContext';
 import styles from './AdminToolsBlock.module.scss';
 
 export default function AdminToolsBlock() {
   const { setModalActive } = useContext(UIContext);
 
-  const handleProductModal = () => {
+  const handleProductModal = type => {
+    if (type === ADD_CATEGORY) return;
+    if (type === ADD_PRODUCT) return;
     setModalActive(true);
   };
 
@@ -17,7 +20,7 @@ export default function AdminToolsBlock() {
         <Button
           className={styles.submit}
           variant='contained'
-          onClick={handleProductModal}
+          onClick={() => handleProductModal(ADD_CATEGORY)}
           sx={{
             background: '#ff683a',
             marginTop: 5,
@@ -36,7 +39,7 @@ export default function AdminToolsBlock() {
         <Button
           className={styles.submit}
           variant='contained'
-          onClick={handleProductModal}
+          onClick={() => handleProductModal(ADD_PRODUCT)}
           sx={{
             background: '#ff683a',
             marginTop: 5,
