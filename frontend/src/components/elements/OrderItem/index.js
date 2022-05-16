@@ -2,8 +2,6 @@ import { useState } from 'react';
 import styles from './OrderItem.module.scss';
 
 const OrderItem = ({ orderItem }) => {
-  const [orderItems, setOrderItems] = useState([]);
-
   return (
     <li className={styles.itemContainer}>
       <div className={styles.photoContainer}>

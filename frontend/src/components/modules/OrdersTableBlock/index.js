@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UIContext } from '../../../context/UIContext';
+import OrderItem from '../../elements/OrderItem';
 import styles from './OrdersTableBlock.module.scss';
 
 export default function OrdersTableBlock() {
-  const { cartProducts } = useContext(UIContext);
+  const [orderItems, setOrderItems] = useState([]);
 
   useEffect(() => {
     // TODO: Fetch Data
@@ -20,8 +21,8 @@ export default function OrdersTableBlock() {
           <h3>Сумма</h3>
           <h3>Статус</h3>
         </div>
-        {cartProducts.map(cartItem => (
-          <div></div>
+        {orderItems.map(orderItem => (
+          <OrderItem key={orderItem.id} orderItem={orderItem} />
         ))}
       </ul>
     </div>
