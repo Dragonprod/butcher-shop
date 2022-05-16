@@ -7,7 +7,7 @@ import styles from './OrdersPage.module.scss';
 export default function OrdersPage() {
   return (
     <>
-      <Header />
+      <Header isOnAdminPage />
       <section className={styles.mainContainer}>
         <AdminSideBar />
         <OrdersTable />

@@ -6,7 +6,7 @@ import styles from './AdminProductsPage.module.scss';
 export default function AdminProductsPage() {
   return (
     <>
-      <Header />
+      <Header isOnAdminPage />
       <section className={styles.mainContainer}>
         <AdminSideBar />
       </section>

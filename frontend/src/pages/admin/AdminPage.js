@@ -7,7 +7,7 @@ import styles from './AdminPage.module.scss';
 export default function AdminPage() {
   return (
     <>
-      <Header />
+      <Header isOnAdminPage />
       <section className={styles.mainContainer}>
         <AdminSideBar />
         <UsersTable />

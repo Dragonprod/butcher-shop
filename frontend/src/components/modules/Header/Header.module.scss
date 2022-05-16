@@ -12,11 +12,19 @@
   z-index: 5;
   border-bottom: 1px solid #eee;
 
+  &.isOnAdminPage {
+    padding: 16px 32px;
+  }
+
   .contentContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: var(--max-width);
+
+    &.isOnAdminPage {
+      width: 100%;
+    }
   }
 }
 

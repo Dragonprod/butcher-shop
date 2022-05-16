@@ -6,11 +6,15 @@ import { Link } from 'react-router-dom';
 import { AUTH_PAGE } from '../../../constants';
 import { Avatar } from '@mui/material';
 
-export default function Header({ page = '' }) {
+export default function Header({ page = '', isOnAdminPage }) {
   const { isAuth, isAdmin } = useContext(AuthContext);
   return (
-    <header className={styles.header}>
-      <div className={styles.contentContainer}>
+    <header
+      className={`${styles.header} ${isOnAdminPage && styles.isOnAdminPage}`}>
+      <div
+        className={`${styles.contentContainer} ${
+          isOnAdminPage && styles.isOnAdminPage
+        }`}>
         <Link to='/'>
           <Logo />
         </Link>
