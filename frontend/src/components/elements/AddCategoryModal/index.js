@@ -16,7 +16,7 @@ export default function AddCategoryModal() {
         <TextField
           className={styles.login}
           onChange={handleCategoryChange}
-          label='Логин'
+          label='Название категории'
           variant='outlined'
           required
           fullWidth
