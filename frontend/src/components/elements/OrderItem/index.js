@@ -1,21 +1,33 @@
 import styles from './OrderItem.module.scss';
+import img from '../../../assets/images/login0.jpg';
 
 const OrderItem = ({ orderItem }) => {
   return (
     <li className={styles.itemContainer}>
-      <div className={styles.photoContainer}>
-        <img src={orderItem.photoUrl} alt={orderItem.name} />
+      <div className={styles.idContainer}>
+        <h4>{orderItem.id}</h4>
       </div>
-      <div className={styles.contentContainer}>
-        <h3>{orderItem.name}</h3>
-        <p>{orderItem.weight} кг</p>
+      <div className={styles.ordersContainer}>
+        {orderItem.products.map(product => (
+          <div key={product.id} className={styles.productContainer}>
+            <img src={img} alt={product.name} />
+            <h3>{product.name}</h3>
+          </div>
+        ))}
       </div>
-      <div className={styles.priceContainer}>
-        <h4>{orderItem.price} ₽</h4>
+      <div className={styles.dateContainer}>
+        <h4>{orderItem.createDate}</h4>
       </div>
-      <div className={styles.counterContainer}></div>
       <div className={styles.sumContainer}>
-        <h4>{999} ₽</h4>
+        <h4>{orderItem.sum} ₽</h4>
+      </div>
+      <div className={styles.statusContainer}>
+        {orderItem.isCompleted ? (
+          <h4 style={{ color: 'green' }}>Оплачено</h4>
+        ) : (
+          <h4 style={{ color: 'red' }}>В процессе</h4>
+        )}
+        {/* <h4>{orderItem.isCompleted}</h4> */}
       </div>
     </li>
   );

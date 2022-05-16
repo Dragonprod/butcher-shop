@@ -20,7 +20,7 @@ export const defaultOrders = [
     ],
     createDate: '16.05.2002',
     sum: 999,
-    status: false,
+    isCompleted: false,
   },
   {
     id: 1,
@@ -38,7 +38,7 @@ export const defaultOrders = [
     ],
     createDate: '10.05.2002',
     sum: 5500,
-    status: true,
+    isCompleted: true,
   },
   {
     id: 2,
@@ -61,6 +61,6 @@ export const defaultOrders = [
     ],
     createDate: '10.05.2002',
     sum: 1500,
-    status: true,
+    isCompleted: true,
   },
 ];
