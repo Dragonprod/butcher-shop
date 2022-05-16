@@ -158,77 +158,52 @@ export const defaultAdminOrders = [
   },
 ];
 
-export const defaultAdminProducts = [
+export const defaultAdminCategories = [
   {
     id: 0,
-    email: 'user0@mail.ru',
+    name: 'Бургеры',
     products: [
       {
         id: 0,
         name: 'Чикен бургер',
         photoUrl: './assets/images/1.png',
+        weight: 0.5,
+        price: 100,
       },
       {
         id: 1,
         name: 'Гамбургер',
         photoUrl: './assets/images/1.png',
+        weight: 0.5,
+        price: 110,
       },
       {
         id: 2,
         name: 'Чизбургер',
         photoUrl: './assets/images/1.png',
+        weight: 0.5,
+        price: 120,
       },
     ],
-    createDate: '16.05.2002',
-    sum: 999,
-    isCompleted: false,
   },
   {
     id: 1,
-    email: 'user1@mail.ru',
+    name: 'Стейки',
     products: [
       {
         id: 0,
-        name: 'Чикен бургер',
+        name: 'Стейк из говядины',
         photoUrl: './assets/images/1.png',
+        weight: 2,
+        price: 2000,
       },
       {
         id: 1,
-        name: 'Гамбургер',
+        name: 'Стейк из баранины',
         photoUrl: './assets/images/1.png',
-      },
-      {
-        id: 2,
-        name: 'Чизбургер',
-        photoUrl: './assets/images/1.png',
+        weight: 3,
+        price: 3000,
       },
     ],
-    createDate: '17.11.2002',
-    sum: 6375,
-    isCompleted: false,
-  },
-  {
-    id: 2,
-    email: 'user2@mail.ru',
-    products: [
-      {
-        id: 0,
-        name: 'Чикен бургер',
-        photoUrl: './assets/images/1.png',
-      },
-      {
-        id: 1,
-        name: 'Гамбургер',
-        photoUrl: './assets/images/1.png',
-      },
-      {
-        id: 2,
-        name: 'Чизбургер',
-        photoUrl: './assets/images/1.png',
-      },
-    ],
-    createDate: '17.11.2002',
-    sum: 7482,
-    isCompleted: true,
   },
 ];
