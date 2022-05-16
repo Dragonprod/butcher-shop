@@ -1,5 +1,4 @@
-import React, { useContext, useState } from 'react';
-import { UIContext } from '../../../context/UIContext';
+import React, { useState } from 'react';
 import { defaultUsers } from '../../../temp';
 import UserItem from '../../elements/UserItem';
 import styles from './UsersTable.module.scss';

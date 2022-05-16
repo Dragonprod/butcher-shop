@@ -9,6 +9,7 @@ import LogoutPage from './pages/default/auth/LogoutPage';
 import UIContextProvider from './context/UIContext';
 import ProfilePage from './pages/user/profile/ProfilePage';
 import AdminPage from './pages/admin/AdminPage';
+import OrdersPage from './pages/admin/orders/OrdersPage';
 
 function App() {
   const [isAuth, setisAuth] = useState(false);
@@ -32,7 +33,17 @@ function App() {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ isAuth, setisAuth, isAdmin, setisAdmin, user, setUser, apiToken, setapiToken }}>
+    <AuthContext.Provider
+      value={{
+        isAuth,
+        setisAuth,
+        isAdmin,
+        setisAdmin,
+        user,
+        setUser,
+        apiToken,
+        setapiToken,
+      }}>
       <UIContextProvider>
         <BrowserRouter>
           <Routes>
@@ -71,6 +82,15 @@ function App() {
               element={
                 <ProtectedRoute>
                   <AdminPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              exact
+              path='/admin/orders'
+              element={
+                <ProtectedRoute>
+                  <OrdersPage />
                 </ProtectedRoute>
               }
             />
