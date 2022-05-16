@@ -1,8 +1,15 @@
 import { Button } from '@mui/material';
-import React from 'react';
+import React, { useContext } from 'react';
+import { UIContext } from '../../../context/UIContext';
 import styles from './AdminToolsBlock.module.scss';
 
 export default function AdminToolsBlock() {
+  const { setModalActive } = useContext(UIContext);
+
+  const handleProductModal = () => {
+    setModalActive(true);
+  };
+
   return (
     <div className={styles.block}>
       <h2 className={styles.title}>Опции</h2>
@@ -10,6 +17,7 @@ export default function AdminToolsBlock() {
         <Button
           className={styles.submit}
           variant='contained'
+          onClick={handleProductModal}
           sx={{
             background: '#ff683a',
             marginTop: 5,
@@ -28,6 +36,7 @@ export default function AdminToolsBlock() {
         <Button
           className={styles.submit}
           variant='contained'
+          onClick={handleProductModal}
           sx={{
             background: '#ff683a',
             marginTop: 5,
