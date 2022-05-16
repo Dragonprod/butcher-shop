@@ -2,7 +2,8 @@
   display: grid;
   place-content: center;
   padding: calc(72px + 48px) 0 72px;
-  min-height: calc(100vh - 72px);
+  // min-height: calc(100vh - 72px);
+  min-height: 100vh;
   background: var(--bg-clr-2);
   gap: 128px;
 }
