@@ -20,7 +20,7 @@ export default function OrdersTable() {
             <h3>Сумма</h3>
           </div>
           {adminOrders.map(adminOrder => (
-            <AdminOrderItem key={adminOrder.id} />
+            <AdminOrderItem key={adminOrder.id} adminOrder={adminOrder} />
             // <UserItem key={user.id} userItem={user} />
           ))}
         </ul>
