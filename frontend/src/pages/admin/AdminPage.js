@@ -1,7 +1,7 @@
 import React from 'react';
 import AdminSideBar from '../../components/modules/AdminSideBar';
-import Footer from '../../components/modules/Footer';
 import Header from '../../components/modules/Header';
+import UsersTable from '../../components/modules/UsersTable';
 import styles from './AdminPage.module.scss';
 
 export default function AdminPage() {
@@ -10,6 +10,7 @@ export default function AdminPage() {
       <Header />
       <section className={styles.mainContainer}>
         <AdminSideBar />
+        <UsersTable />
       </section>
     </>
   );
