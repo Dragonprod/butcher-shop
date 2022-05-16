@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { defaultAdminOrders } from '../../../temp';
+import AdminOrderItem from '../../elements/AdminOrderItem';
 import styles from './OrdersTable.module.scss';
 
 export default function OrdersTable() {
@@ -19,7 +20,7 @@ export default function OrdersTable() {
             <h3>Сумма</h3>
           </div>
           {adminOrders.map(adminOrder => (
-            <></>
+            <AdminOrderItem key={adminOrder.id} />
             // <UserItem key={user.id} userItem={user} />
           ))}
         </ul>
