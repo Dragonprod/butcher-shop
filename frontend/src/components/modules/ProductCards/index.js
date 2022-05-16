@@ -3,7 +3,7 @@ import styles from './ProductCards.module.scss';
 import ProductCard from '../../elements/ProductCard';
 import API from '../../../api';
 
-export default function ProductCards() {
+export default function ProductCards({ isOnAdminPage }) {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -21,7 +21,11 @@ export default function ProductCards() {
           <h2>{category.name}</h2>
           <div className={styles.productsGrid}>
             {category.products.map(product => (
-              <ProductCard key={product.id} productCard={product} />
+              <ProductCard
+                key={product.id}
+                productCard={product}
+                isOnAdminPage
+              />
             ))}
           </div>
         </div>

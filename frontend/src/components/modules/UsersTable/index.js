@@ -31,25 +31,28 @@ export default function UsersTable() {
   }
   return (
     <>
-      {users.length > 0 ? (
-        <ul className={styles.table}>
-          <div className={styles.tableHeader}>
-            <h3>ID</h3>
-            <h3>Логин</h3>
-            <h3>Почта</h3>
-            <h3>Пароль</h3>
-            <h3>Кол-во заказов</h3>
-            <h3>Роль</h3>
-          </div>
-          {users.map(user => (
-            <UserItem key={user.id} userItem={user} handleDelete={() => handleDelete(user.id)}/>
-          ))}
-        </ul>
-      ) : (
-        <>
-          <h2 className={styles.emptyCartTitle}>Нет записей</h2>
-        </>
-      )}
+      <div className={styles.tableContainer}>
+        <h2 className={styles.title}>Пользователи</h2>
+        {users.length > 0 ? (
+          <ul className={styles.table}>
+            <div className={styles.tableHeader}>
+              <h3>ID</h3>
+              <h3>Логин</h3>
+              <h3>Почта</h3>
+              <h3>Пароль</h3>
+              <h3>Кол-во заказов</h3>
+              <h3>Роль</h3>
+            </div>
+            {users.map(user => (
+              <UserItem key={user.id} userItem={user} handleDelete={() => handleDelete(user.id)}/>
+            ))}
+          </ul>
+        ) : (
+          <>
+            <h2 className={styles.emptyCartTitle}>Нет записей</h2>
+          </>
+        )}
+      </div>
     </>
   );
 }
