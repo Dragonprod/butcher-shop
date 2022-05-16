@@ -33,6 +33,15 @@ public class OrderController {
         return orderRepository.findAll();
     }
 
+    @GetMapping("/sorted")
+    public List<Order> getOrdersSorted(@RequestParam Boolean isComplete) {
+        if (isComplete) {
+            return orderRepository.findAllByIsComplete(isComplete);
+        } else {
+            return orderRepository.findAllByIsComplete(isComplete);
+        }
+    }
+
     @PostMapping("")
     public ResponseEntity<?> createOrder(@Valid @RequestBody OrderRequest orderRequest) {
         User user = userRepository.findById(orderRequest.getUserId())
