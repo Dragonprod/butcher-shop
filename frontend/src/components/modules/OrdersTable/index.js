@@ -4,12 +4,19 @@ import AdminOrderItem from '../../elements/AdminOrderItem';
 import styles from './OrdersTable.module.scss';
 
 export default function OrdersTable() {
-  const [adminOrders, setAdminOrders] = useState(defaultAdminOrders);
+  const [uncompletedOrders, setUncompletedOrders] = useState(
+    defaultAdminOrders.filter(item => !item.isCompleted)
+  );
+  const [completedOrders, setCompletedOrders] = useState(
+    defaultAdminOrders.filter(item => item.isCompleted)
+  );
+
+  const handleCompleteOrder = () => {};
 
   return (
     <>
       <h2 className={styles.title}>Незавершённые заказы</h2>
-      {adminOrders.length > 0 ? (
+      {uncompletedOrders.length > 0 ? (
         <ul className={styles.table}>
           <div className={styles.tableHeader}>
             <h3>ID заказа</h3>
@@ -18,7 +25,7 @@ export default function OrdersTable() {
             <h3>Дата оформления</h3>
             <h3>Сумма</h3>
           </div>
-          {adminOrders.map(adminOrder => (
+          {uncompletedOrders.map(adminOrder => (
             <AdminOrderItem key={adminOrder.id} adminOrder={adminOrder} />
           ))}
         </ul>
@@ -29,7 +36,7 @@ export default function OrdersTable() {
       )}
 
       <h2 className={styles.title}>Завершённые заказы</h2>
-      {adminOrders.length > 0 ? (
+      {completedOrders.length > 0 ? (
         <ul className={styles.table}>
           <div className={styles.tableHeader}>
             <h3>ID заказа</h3>
@@ -38,7 +45,7 @@ export default function OrdersTable() {
             <h3>Дата оформления</h3>
             <h3>Сумма</h3>
           </div>
-          {adminOrders.map(adminOrder => (
+          {completedOrders.map(adminOrder => (
             <AdminOrderItem key={adminOrder.id} adminOrder={adminOrder} />
           ))}
         </ul>

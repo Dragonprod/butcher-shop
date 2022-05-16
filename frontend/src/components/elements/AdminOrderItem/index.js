@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './AdminOrderItem.module.scss';
 import img1 from '../../../assets/images/login0.jpg';
 
-export default function AdminOrderItem({ adminOrder }) {
+export default function AdminOrderItem({ adminOrder, handleCompleteOrder }) {
   return (
     <li className={styles.itemContainer}>
       <div>
@@ -27,7 +27,9 @@ export default function AdminOrderItem({ adminOrder }) {
         <h4>{adminOrder.sum}</h4>
       </div>
       <div>
-        <button className={styles.completeButton}>Закрыть</button>
+        {!adminOrder.isCompleted && (
+          <button className={styles.completeButton}>Закрыть</button>
+        )}
       </div>
     </li>
   );
