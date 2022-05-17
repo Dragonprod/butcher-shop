@@ -16,6 +16,7 @@ import javax.validation.Valid;
 import java.util.*;
 
 @RestController
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/api/order")
 public class OrderController {
     @Autowired

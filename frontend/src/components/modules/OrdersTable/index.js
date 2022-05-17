@@ -36,7 +36,6 @@ export default function OrdersTable() {
     try {
       await API.post(`/order/${id}/complete`);
       setUncompletedOrders(uncompletedOrders.filter(item => item.id !== id));
-      setUncompletedOrders(completedOrders.filter(item => item.id !== id));
     } catch (err) {
       console.log(err.response);
     }

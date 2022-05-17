@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styles from './ProductCard.module.scss';
 import { UIContext } from '../../../context/UIContext';
-import img0 from '../../../assets/images/login0.jpg';
+import API from '../../../api';
 
 export default function ProductCard({ productCard, isOnAdminPage }) {
   const {
@@ -20,18 +20,29 @@ export default function ProductCard({ productCard, isOnAdminPage }) {
     setSelectedProduct(productCard);
   };
 
-  const handleAddToCart = () => {
-    if (cartProducts.indexOf(productCard) === -1) {
-      setCartProducts([...cartProducts, productCard]);
-      setIsProductAddedToCart(true);
-      setTotalPrice(prevAmount => prevAmount + productCard.price);
-      if (cartProductsWithAmount[productCard.id] === undefined) {
-        setCartProductsWithAmount(prevState => ({
-          ...prevState,
-          [productCard.id.toString()]: 1,
-        }));
+  const handleAddToCart = async e => {
+    if(isOnAdminPage) {
+      try {
+        await API.delete(`/products/${productCard.id}`)
+      } 
+      catch (err) {
+        console.log(err.response.data)
       }
     }
+    else {
+      if (cartProducts.indexOf(productCard) === -1) {
+        setCartProducts([...cartProducts, productCard]);
+        setIsProductAddedToCart(true);
+        setTotalPrice(prevAmount => prevAmount + productCard.price);
+        if (cartProductsWithAmount[productCard.id] === undefined) {
+          setCartProductsWithAmount(prevState => ({
+            ...prevState,
+            [productCard.id.toString()]: 1,
+          }));
+        }
+      }
+    }
+    
   };
 
   return (
