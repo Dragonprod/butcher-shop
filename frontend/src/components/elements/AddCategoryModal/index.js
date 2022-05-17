@@ -4,17 +4,88 @@ import { ADD_CATEGORY } from '../../../constants';
 import { UIContext } from '../../../context/UIContext';
 import Modal from '../Modal';
 import styles from './AddCategoryModal.module.scss';
+import API from '../../../api';
 
 export default function AddCategoryModal() {
   const [category, setCategory] = useState('');
-  const { adminModalType } = useContext(UIContext);
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [photoUrl, setPhotoUrl] = useState('');
+  const [weight, setWeight] = useState(0);
+  const [expirationDate, setExpirationDate] = useState(0);
+  const [storageConditions, setStorageConditions] = useState('');
+  const [composition, setComposition] = useState('');
+  const [price, setPrice] = useState(0);
+  const { adminModalType, setModalActive } = useContext(UIContext);
 
   const handleCategoryChange = e => {
     setCategory(e.target.value);
   };
 
-  const handleSubmit = e => {
+  const handleNameChange = e => {
+    setName(e.target.value);
+  };
+
+  const handleDescriptionChange = e => {
+    setDescription(e.target.value);
+  };
+
+  const handlePhotoUrlChange = e => {
+    setPhotoUrl(e.target.value);
+  };
+
+  const handleWeightChange = e => {
+    setWeight(e.target.value);
+  };
+
+  const handleExpirationDateChange = e => {
+    setExpirationDate(e.target.value);
+  };
+
+  const handleStorageConditionsChange = e => {
+    setStorageConditions(e.target.value);
+  };
+
+  const handleCompositionChange = e => {
+    setComposition(e.target.value);
+  };
+
+  const handlePriceChange = e => {
+    setPrice(e.target.value);
+  };
+
+  const handleSubmit = async e => {
     e.preventDefault();
+    if(adminModalType === ADD_CATEGORY) {
+      try {
+        const categoryData = {
+          name: category
+        }
+        await API.post(`/categories`, categoryData);
+        setModalActive(false);
+      } catch (err) {
+        console.log(err.response);
+      }
+    }
+    else {
+      try {
+        const productData = {
+          name: name,
+          description: description,
+          photoUrl: photoUrl,
+          weight: weight,
+          expirationDate: expirationDate,
+          storageConditions: storageConditions,
+          composition: composition,
+          category: category,
+          price: price
+        }
+        await API.post(`/products`, productData);
+        setModalActive(false);
+      } catch (err) {
+        console.log(err.response);
+      }
+    }
   };
 
   return (
@@ -35,9 +106,9 @@ export default function AddCategoryModal() {
               margin='normal'
               sx={{
                 '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
-                  {
-                    borderColor: '#ff683a',
-                  },
+                {
+                  borderColor: '#ff683a',
+                },
                 '& .MuiOutlinedInput-root': {
                   borderRadius: '12px',
                 },
@@ -69,7 +140,7 @@ export default function AddCategoryModal() {
             onSubmit={handleSubmit}>
             <TextField
               className={styles.login}
-              onChange={handleCategoryChange}
+              onChange={handleNameChange}
               label='Название продукта'
               variant='outlined'
               required
@@ -77,9 +148,9 @@ export default function AddCategoryModal() {
               margin='normal'
               sx={{
                 '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
-                  {
-                    borderColor: '#ff683a',
-                  },
+                {
+                  borderColor: '#ff683a',
+                },
                 '& .MuiOutlinedInput-root': {
                   borderRadius: '12px',
                 },
@@ -87,7 +158,7 @@ export default function AddCategoryModal() {
             />
             <TextField
               className={styles.login}
-              onChange={handleCategoryChange}
+              onChange={handleDescriptionChange}
               label='Описание'
               variant='outlined'
               required
@@ -95,9 +166,9 @@ export default function AddCategoryModal() {
               margin='normal'
               sx={{
                 '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
-                  {
-                    borderColor: '#ff683a',
-                  },
+                {
+                  borderColor: '#ff683a',
+                },
                 '& .MuiOutlinedInput-root': {
                   borderRadius: '12px',
                 },
@@ -105,7 +176,7 @@ export default function AddCategoryModal() {
             />
             <TextField
               className={styles.login}
-              onChange={handleCategoryChange}
+              onChange={handlePhotoUrlChange}
               label='URL изображения'
               variant='outlined'
               required
@@ -113,9 +184,9 @@ export default function AddCategoryModal() {
               margin='normal'
               sx={{
                 '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
-                  {
-                    borderColor: '#ff683a',
-                  },
+                {
+                  borderColor: '#ff683a',
+                },
                 '& .MuiOutlinedInput-root': {
                   borderRadius: '12px',
                 },
@@ -123,7 +194,7 @@ export default function AddCategoryModal() {
             />
             <TextField
               className={styles.login}
-              onChange={handleCategoryChange}
+              onChange={handleWeightChange}
               label='Вес'
               variant='outlined'
               required
@@ -131,9 +202,9 @@ export default function AddCategoryModal() {
               margin='normal'
               sx={{
                 '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
-                  {
-                    borderColor: '#ff683a',
-                  },
+                {
+                  borderColor: '#ff683a',
+                },
                 '& .MuiOutlinedInput-root': {
                   borderRadius: '12px',
                 },
@@ -141,7 +212,7 @@ export default function AddCategoryModal() {
             />
             <TextField
               className={styles.login}
-              onChange={handleCategoryChange}
+              onChange={handleExpirationDateChange}
               label='Срок годности'
               variant='outlined'
               required
@@ -149,9 +220,9 @@ export default function AddCategoryModal() {
               margin='normal'
               sx={{
                 '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
-                  {
-                    borderColor: '#ff683a',
-                  },
+                {
+                  borderColor: '#ff683a',
+                },
                 '& .MuiOutlinedInput-root': {
                   borderRadius: '12px',
                 },
@@ -159,7 +230,7 @@ export default function AddCategoryModal() {
             />
             <TextField
               className={styles.login}
-              onChange={handleCategoryChange}
+              onChange={handleStorageConditionsChange}
               label='Условия хранения'
               variant='outlined'
               required
@@ -167,9 +238,9 @@ export default function AddCategoryModal() {
               margin='normal'
               sx={{
                 '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
-                  {
-                    borderColor: '#ff683a',
-                  },
+                {
+                  borderColor: '#ff683a',
+                },
                 '& .MuiOutlinedInput-root': {
                   borderRadius: '12px',
                 },
@@ -177,7 +248,7 @@ export default function AddCategoryModal() {
             />
             <TextField
               className={styles.login}
-              onChange={handleCategoryChange}
+              onChange={handleCompositionChange}
               label='Состав'
               variant='outlined'
               required
@@ -185,9 +256,9 @@ export default function AddCategoryModal() {
               margin='normal'
               sx={{
                 '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
-                  {
-                    borderColor: '#ff683a',
-                  },
+                {
+                  borderColor: '#ff683a',
+                },
                 '& .MuiOutlinedInput-root': {
                   borderRadius: '12px',
                 },
@@ -203,9 +274,9 @@ export default function AddCategoryModal() {
               margin='normal'
               sx={{
                 '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
-                  {
-                    borderColor: '#ff683a',
-                  },
+                {
+                  borderColor: '#ff683a',
+                },
                 '& .MuiOutlinedInput-root': {
                   borderRadius: '12px',
                 },
@@ -213,7 +284,7 @@ export default function AddCategoryModal() {
             />
             <TextField
               className={styles.login}
-              onChange={handleCategoryChange}
+              onChange={handlePriceChange}
               label='Цена'
               variant='outlined'
               required
@@ -221,9 +292,9 @@ export default function AddCategoryModal() {
               margin='normal'
               sx={{
                 '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
-                  {
-                    borderColor: '#ff683a',
-                  },
+                {
+                  borderColor: '#ff683a',
+                },
                 '& .MuiOutlinedInput-root': {
                   borderRadius: '12px',
                 },

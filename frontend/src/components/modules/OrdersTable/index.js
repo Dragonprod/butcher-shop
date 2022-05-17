@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { defaultAdminOrders } from '../../../temp';
 import AdminOrderItem from '../../elements/AdminOrderItem';
 import styles from './OrdersTable.module.scss';
 import API from '../../../api';
