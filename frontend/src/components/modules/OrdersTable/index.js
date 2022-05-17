@@ -56,7 +56,11 @@ export default function OrdersTable() {
               <h3>Сумма</h3>
             </div>
             {uncompletedOrders.map(adminOrder => (
-              <AdminOrderItem key={adminOrder.id} adminOrder={adminOrder} />
+              <AdminOrderItem
+                key={adminOrder.id}
+                adminOrder={adminOrder}
+                handleCompleteOrder={() => handleCompleteOrder(adminOrder.id)}
+              />
             ))}
           </ul>
         ) : (
@@ -77,11 +81,7 @@ export default function OrdersTable() {
               <h3>Сумма</h3>
             </div>
             {completedOrders.map(adminOrder => (
-              <AdminOrderItem
-                key={adminOrder.id}
-                adminOrder={adminOrder}
-                handleCompleteOrder={() => handleCompleteOrder(adminOrder.id)}
-              />
+              <AdminOrderItem key={adminOrder.id} adminOrder={adminOrder} />
             ))}
           </ul>
         ) : (
