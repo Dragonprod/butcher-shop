@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react';
 import styles from './ProductCards.module.scss';
 import ProductCard from '../../elements/ProductCard';
 import API from '../../../api';
-import { defaultAdminCategories } from '../../../temp';
 
 export default function ProductCards({ isOnAdminPage }) {
-  // const [categories, setCategories] = useState([]);
-  const [categories, setCategories] = useState(defaultAdminCategories);
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     const getCategoriesData = async () => {
@@ -26,7 +24,7 @@ export default function ProductCards({ isOnAdminPage }) {
               <ProductCard
                 key={product.id}
                 productCard={product}
-                isOnAdminPage
+                isOnAdminPage={isOnAdminPage}
               />
             ))}
           </div>
