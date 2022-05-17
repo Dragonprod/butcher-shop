@@ -1,0 +1,12 @@
+.mainContainer {
+  display: grid;
+  place-content: center;
+  // padding: calc(72px + 48px) 0 72px;
+  height: 100vh;
+  background: var(--bg-clr-2);
+}
+
+.title {
+  text-align: center;
+  color: var(--text-clr-2);
+}
